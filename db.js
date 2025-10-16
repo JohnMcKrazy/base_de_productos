@@ -9,18 +9,19 @@ export const db={
         {
             id:1,
             nombre:"Salvat",
-            tag:"salvat,
+            tag:"salvat",
         },
         {
             id:2,
             nombre:"Planeta",
-            tag:"planeta,
+            tag:"planeta",
         },
         {
             id:3,
             nombre:"Loopa",
-            tag:"loopa,
+            tag:"loopa",
         },
     ]
 
 }
+
