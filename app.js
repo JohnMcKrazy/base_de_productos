@@ -1,12 +1,7 @@
-const db={ 
-    usuarios:[
-        {
-            nombre:"Jonathan",
-            apellido:"Grajeda"
-        }
-    ]
-}
+import { db } from "./db";
    
 
+
+console.log(db);
 
 console.log(db);
