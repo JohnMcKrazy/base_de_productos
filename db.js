@@ -3,6 +3,7 @@ export const db={
         {
             nombre:"Jonathan",
             apellido:"Grajeda"
+            titulos:""
         }
     ],
     editoriales:[
@@ -10,18 +11,22 @@ export const db={
             id:1,
             nombre:"Salvat",
             tag:"salvat",
+            titulos:""
         },
         {
             id:2,
             nombre:"Planeta",
             tag:"planeta",
+            titulos:""
         },
         {
             id:3,
             nombre:"Loopa",
             tag:"loopa",
+            titulos:""
         },
     ]
 
 }
+
 
