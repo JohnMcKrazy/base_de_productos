@@ -1,34 +1,54 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!-- <![endif]-->
 <html lang="es">
- <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-        <script type="module" src="app.js"  async defer></script>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Biblioteca Editoriales</title>
+        <script type="module" src="app.js" async defer></script>
+        <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <header>
-<nav>
-    <select name="editoriales" id="editoriales" selector="select-editoriales">
-</select>
-</nav>
-        </header>
-        <main>
-<form>
-    <button type="submit"></button>
-    <button type="button"></button>
-</form>
+        <!-- Barra de navegación -->
+        <nav class="navbar">
+            <h1 class="navbar__title">📚 Biblioteca Editoriales</h1>
+            <div class="navbar__search">
+                <label for="editoriales">Buscar editorial:</label>
+                <select id="editoriales" selector-ref="select">
+                    <!-- Opciones generadas dinámicamente -->
+                </select>
+            </div>
+        </nav>
+
+        <!-- Template de opción -->
+
+        <!-- Contenedor principal -->
+        <main selector-ref="content">
+            <p>Selecciona una editorial o escanea un código de barras.</p>
+
+            <div class="scanner">
+                <button id="start-scan">📷 Escanear Código</button>
+                <video id="video" autoplay playsinline></video>
+            </div>
+
+            <div id="scan-result"></div>
         </main>
+
+        <div selector-ref="cards-container"></div>
+
+        <!-- Scripts -->
     </body>
-    <template selector="option_template"></template>
+    <template selector-ref="option_template">
+        <option value="" selector-ref="option"></option>
+    </template>
+    <template selector-ref="card-template">
+        <div selector-ref="card" class="card">
+            <div selector-ref="card-header">
+                <h3 selector-ref="title"></h3>
+                <span selector-ref="card-tag"></span>
+            </div>
+            <div selector-ref="card-body">
+                <div selector-ref="card-buttons"></div>
+            </div>
+        </div>
+    </template>
 </html>
