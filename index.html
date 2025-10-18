@@ -23,12 +23,12 @@
         <!-- Template de opción -->
 
         <!-- Contenedor principal -->
-        <main selector-ref="content">
-            <p>Selecciona una editorial o escanea un código de barras.</p>
+        <main>
+            <p selector-ref="content_text">Selecciona una editorial o escanea un código de barras.</p>
+            <div selector-ref="content"></div>
         </main>
         <div selector-ref="scanner_container">
             <div id="reader" selector-ref="reader" width="600px"></div>
-            <input type="file" id="qr-input-file" accept="image/*" />
             <div class="scanner">
                 <button selector-ref="start_scan">📷 Escanear Código</button>
                 <video selector-ref="video" autoplay playsinline></video>

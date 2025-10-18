@@ -227,5 +227,25 @@ export const db = {
                 },
             ],
         },
+        {
+            id: 4,
+            nombre: "Prueba",
+            tag: "prueba",
+            titulos: [
+                {
+                    nombre: "Lala",
+                    tag_general: "lala",
+                    tag_id: "",
+                    ediciones: [
+                        {
+                            id: 1,
+                            descripcion: "yaugurt",
+                            imagen: "",
+                            codigo: "7502261257955",
+                        },
+                    ],
+                },
+            ],
+        },
     ],
 };

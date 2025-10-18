@@ -17,9 +17,9 @@ const optionTemplate = selector('[selector-ref="option_template"]').content;
 const cardTemplate = selector('[selector-ref="card_template"]').content;
 const lista = selector('[selector-ref="cards_container"]');
 
-const video = selector("video");
-const startScanBtn = selector("start_scan");
-const resultContainer = selector("scan_result");
+const video = selector("[selector-ref='video']");
+const startScanBtn = selector("[selector-ref='start_scan']");
+const resultContainer = selector("[selector-ref='scan_result']");
 /* if (!select || !optionTemplate) return; */
 console.log(db);
 // Crear las opciones dinámicamente desde db.editoriales
@@ -38,7 +38,51 @@ db.editoriales.forEach((editorial) => {
     option.textContent = editorial.nombre;
     select.appendChild(newOption);
 });
+let html5QrcodeScanner = false;
+const scannerContainer = selector("[selector-ref='scanner_container']");
 
+startScanBtn.addEventListener("click", () => {
+    resultContainer.textContent = "📷 Escaneando...";
+    setTimeout(() => {
+        try {
+            const onScanSuccess = (decodedText, decodedResult) => {
+                // handle the scanned code as you like, for example:
+
+                contentText.innerHTML = `<p>${decodedText}</p>`;
+                scannerContainer.style.display = "none";
+                console.log(`Code matched = ${decodedText}`, decodedResult);
+                db.editoriales.forEach((editorial) => {
+                    editorial.titulos.forEach((titulo) => {
+                        titulo.ediciones.forEach((edicion) => {
+                            if (edicion.codigo === decodedText) {
+                                html5QrCode
+                                    .stop()
+                                    .then((ignore) => {
+                                        // QR Code scanning is stopped.
+                                    })
+                                    .catch((err) => {
+                                        // Stop failed, handle it.
+                                    });
+                            }
+                        });
+                    });
+                });
+            };
+
+            const onScanFailure = (error) => {
+                // handle scan failure, usually better to ignore and keep scanning.
+                // for example:
+                console.warn(`Code scan error = ${error}`);
+            };
+
+            html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: { width: 250, height: 250 } }, /* verbose= */ false);
+            html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+        } catch (error) {
+            resultContainer.textContent = "❌ Error al acceder a la cámara.";
+            console.error(error);
+        }
+    }, 3000);
+});
 // Evento al cambiar selección
 select.addEventListener("change", (e) => {
     const selectedTag = e.target.value;
@@ -46,57 +90,22 @@ select.addEventListener("change", (e) => {
     deleteChildElements(lista);
     renderEditorial(editorial);
 });
+const contentText = selector('[selector-ref="content_text"]');
 const content = selector('[selector-ref="content"]');
 const renderEditorial = (editorial) => {
-    content.innerHTML = "";
+    contentText.innerHTML = "";
 
     if (!editorial) {
-        content.innerHTML = "<p>Selecciona una editorial para ver sus títulos.</p>";
+        contentText.innerHTML = "Selecciona una editorial para ver sus títulos.";
         return;
     }
 
     const titulo = document.createElement("h2");
     titulo.textContent = `Editorial: ${editorial.nombre}`;
-    content.appendChild(titulo);
+    contentText.appendChild(titulo);
     console.log(editorial.titulos);
 
     editorial.titulos.forEach((tituloItem) => {
         crearCarta(tituloItem);
     });
 };
-
-const onScanSuccess = (decodedText, decodedResult) => {
-    // handle the scanned code as you like, for example:
-    /* content.innerHTML = `<p>${decodedText}</p>`; */
-    console.log(`Code matched = ${decodedText}`, decodedResult);
-};
-
-const onScanFailure = (error) => {
-    // handle scan failure, usually better to ignore and keep scanning.
-    // for example:
-    console.warn(`Code scan error = ${error}`);
-};
-
-let html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: { width: 250, height: 250 } }, /* verbose= */ false);
-html5QrcodeScanner.render(onScanSuccess, onScanFailure);
-
-const fileinput = document.getElementById("qr-input-file");
-fileinput.addEventListener("change", (e) => {
-    if (e.target.files.length == 0) {
-        // No file selected, ignore
-        return;
-    }
-
-    const imageFile = e.target.files[0];
-    // Scan QR Code
-    html5QrCode
-        .scanFile(imageFile, true)
-        .then((decodedText) => {
-            // success, use decodedText
-            console.log(decodedText);
-        })
-        .catch((err) => {
-            // failure, handle it.
-            console.log(`Error scanning file. Reason: ${err}`);
-        });
-});
