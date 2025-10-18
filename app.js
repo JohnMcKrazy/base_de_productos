@@ -46,8 +46,8 @@ select.addEventListener("change", (e) => {
     deleteChildElements(lista);
     renderEditorial(editorial);
 });
+const content = selector('[selector-ref="content"]');
 const renderEditorial = (editorial) => {
-    const content = selector('[selector-ref="content"]');
     content.innerHTML = "";
 
     if (!editorial) {
@@ -67,8 +67,8 @@ const renderEditorial = (editorial) => {
 
 const onScanSuccess = (decodedText, decodedResult) => {
     // handle the scanned code as you like, for example:
-    console.log(`Code matched = ${decodedText}`, decodedResult);
     content.innerHTML = `<p>${decodedText}</p>`;
+    console.log(`Code matched = ${decodedText}`, decodedResult);
 };
 
 const onScanFailure = (error) => {
