@@ -10,10 +10,10 @@ export const db = {
             id: 1,
             nombre: "Salvat",
             tag: "salvat",
-            titulos: [
+            items: [
                 {
                     nombre: "Mini Libros Disney",
-                    tag_general: "mini_libros_disney",
+                    subtitle: "mini_libros_disney",
                     tag_id: "2025",
                     ediciones: [
                         {
@@ -38,7 +38,7 @@ export const db = {
                 },
                 {
                     nombre: "Mini Libros Disney 2024",
-                    tag_general: "mini_libros_disney",
+                    subtitle: "mini_libros_disney",
                     tag_id: "2024",
                     ediciones: [
                         {
@@ -63,7 +63,7 @@ export const db = {
                 },
                 {
                     nombre: "Mini Libros Disney Julio Verne",
-                    tag_general: "mini_libros_disney",
+                    subtitle: "mini_libros_disney",
                     tag_id: "julio_verne",
                     ediciones: [
                         {
@@ -88,7 +88,7 @@ export const db = {
                 },
                 {
                     nombre: "Novelas Disney",
-                    tag_general: "novelas_disney",
+                    subtitle: "novelas_disney",
                     tag_id: "",
                     ediciones: [
                         {
@@ -117,10 +117,10 @@ export const db = {
             id: 2,
             nombre: "Planeta",
             tag: "planeta",
-            titulos: [
+            items: [
                 {
                     nombre: "Planeta Metal",
-                    tag_general: "planeta_metal",
+                    subtitle: "planeta_metal",
                     tag_id: "",
                     ediciones: [
                         {
@@ -149,10 +149,10 @@ export const db = {
             id: 3,
             nombre: "Loopa",
             tag: "loopa",
-            titulos: [
+            items: [
                 {
                     nombre: "Formula 1",
-                    tag_general: "formula_1",
+                    subtitle: "formula_1",
                     tag_id: "",
                     ediciones: [
                         {
@@ -177,7 +177,7 @@ export const db = {
                 },
                 {
                     nombre: "Formula 1 redbull",
-                    tag_general: "formula_1",
+                    subtitle: "formula_1",
                     tag_id: "redbull",
                     ediciones: [
                         {
@@ -202,26 +202,23 @@ export const db = {
                 },
                 {
                     nombre: "Redbull",
-                    tag_general: "redbull",
+                    subtitle: "redbull",
                     tag_id: "",
                     ediciones: [
                         {
-                            id: 1,
+                            codigo: "",
                             descripcion: "",
                             imagen: "",
-                            codigo: "",
                         },
                         {
-                            id: 2,
+                            codigo: "",
                             descripcion: "",
                             imagen: "",
-                            codigo: "",
                         },
                         {
-                            id: 3,
+                            codigo: "",
                             descripcion: "",
                             imagen: "",
-                            codigo: "",
                         },
                     ],
                 },
@@ -231,10 +228,10 @@ export const db = {
             id: 4,
             nombre: "Prueba",
             tag: "prueba",
-            titulos: [
+            items: [
                 {
                     nombre: "Lala",
-                    tag_general: "lala",
+                    subtitle: "lala",
                     tag_id: "",
                     ediciones: [
                         {
@@ -242,6 +239,19 @@ export const db = {
                             descripcion: "yaugurt",
                             imagen: "",
                             codigo: "7502261257955",
+                        },
+                    ],
+                },
+                {
+                    nombre: "Lala",
+                    subtitle: "lala",
+                    tag_id: "",
+                    ediciones: [
+                        {
+                            id: 1,
+                            descripcion: "bombones",
+                            imagen: "",
+                            codigo: "7506495071219",
                         },
                     ],
                 },

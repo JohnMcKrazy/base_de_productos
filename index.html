@@ -8,50 +8,62 @@
         <script type="module" src="app.js" async defer></script>
         <link rel="stylesheet" href="style.css" />
     </head>
-    <body>
+    <body color-scheme="dark">
         <!-- Barra de navegación -->
         <nav class="navbar">
-            <h1 class="navbar__title">📚 Biblioteca Editoriales</h1>
-            <div class="navbar__search">
-                <label for="editoriales">Buscar editorial:</label>
-                <select id="editoriales" selector-ref="select">
-                    <!-- Opciones generadas dinámicamente -->
-                </select>
-            </div>
+            <button type="button" selector-ref="theme">Theme</button>
         </nav>
+        <main>
+            <div class="colum_container container" selector-ref="start_content">
+                <button type="button" selector-ref="scan" scan-ref="manual">Busqueda Manual</button>
+                <button type="button" selector-ref="scan" scan-ref="scanner">Barcode Scanner</button>
+            </div>
+            <div class="container" selector-ref="scanner_container" visibility="hidde">
+                <h1 class="navbar__title">📷 Busqueda por escanes</h1>
 
+                <div selector-ref="scan_result"></div>
+                <div id="reader" selector-ref="reader" width="600px"></div>
+                <div class="btns_container">
+                    <button selector-ref="stop_scan">Parar el escaneo</button>
+                </div>
+            </div>
+            <div class="container" selector-ref="manual_container" visibility="hidde">
+                <h1 class="navbar__title">📚 Biblioteca Editoriales</h1>
+                <div selector-ref="content"></div>
+                <div class="navbar__search">
+                    <label for="editoriales">Buscar editorial:</label>
+                    <select id="editoriales" selector-ref="select"></select>
+                </div>
+                <p selector-ref="content_text">Busca por editorial</p>
+                <ul selector-ref="cards_container"></ul>
+            </div>
+        </main>
         <!-- Template de opción -->
 
-        <!-- Contenedor principal -->
+        <!--    
+        
         <main>
-            <p selector-ref="content_text">Selecciona una editorial o escanea un código de barras.</p>
-            <div selector-ref="content"></div>
+            
         </main>
-        <div selector-ref="scanner_container">
-            <div id="reader" selector-ref="reader" width="600px"></div>
-            <div class="scanner">
-                <button selector-ref="start_scan">📷 Escanear Código</button>
-                <video selector-ref="video" autoplay playsinline></video>
-            </div>
-
-            <div selector-ref="scan_result"></div>
-        </div>
-        <div selector-ref="cards_container"></div>
-
+        
+        
+ -->
         <!-- Scripts -->
     </body>
     <template selector-ref="option_template">
         <option value="" selector-ref="option"></option>
     </template>
     <template selector-ref="card_template">
-        <div selector-ref="card" class="card">
+        <li selector-ref="card" class="card">
             <div selector-ref="card_header">
-                <h3 selector-ref="title"></h3>
-                <span selector-ref="card_tag"></span>
+                <h1 selector-ref="title"></h1>
+                <h2 selector-ref="subtitle"></h2>
             </div>
             <div selector-ref="card-body">
-                <div selector-ref="card-buttons"></div>
+                <div selector-ref="card-buttons">
+                    <button type="">Ver Info</button>
+                </div>
             </div>
-        </div>
+        </li>
     </template>
 </html>

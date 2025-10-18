@@ -81,6 +81,22 @@
   --backdropShadow: 2px 2px 2rem var(--shadow), -2px -2px 2rem var(--shadow);
 }
 
+:root {
+  font-size: 12px;
+  line-break: loose;
+  line-height: 1.2;
+  letter-spacing: 0.15rem;
+  scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+  scrollbar-color: var(--fc) var(--sc);
+  scrollbar-width: thin;
+}
+:root:focus-within {
+  scroll-behavior: smooth;
+}
+
 BODY {
   --backgroundHero: linear-gradient(transparent, var(--bgC));
   --t_scale: scale 500ms cubic-bezier(0.51, -0.42, 0.06, 1.45);
@@ -99,22 +115,8 @@ BODY {
   overflow-x: hidden;
   background: var(--bgC);
   text-rendering: optimizeSpeed;
-}
-
-:root {
-  font-size: 12px;
-  line-break: loose;
-  line-height: 1.2;
-  letter-spacing: 0.15rem;
-  scroll-behavior: smooth;
-  width: 100%;
   height: 100%;
-  -webkit-text-size-adjust: 100%;
-  scrollbar-color: var(--fc) var(--sc);
-  scrollbar-width: thin;
-}
-:root:focus-within {
-  scroll-behavior: smooth;
+  width: 100%;
 }
 
 :focus {
@@ -219,36 +221,30 @@ I {
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #2c3e50;
-  color: #ecf0f1;
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  background: var(--darkGray);
+  width: -moz-fit-content;
+  width: fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   padding: 1rem 2rem;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  max-width: 95%;
 }
-.navbar__title {
-  margin: 0;
-  font-size: 1.5rem;
-}
-.navbar__search {
+
+.colum_container {
   display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.navbar__search label {
-  font-weight: bold;
-}
-.navbar__search select {
-  padding: 0.4rem 0.6rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
 }
 
 main {
-  padding: 2rem;
+  align-items: center;
+  background-color: #2c3e50;
+  padding: 1rem 2rem;
+  height: 95%;
+  width: 95%;
 }
 
 .scanner {
@@ -279,18 +275,11 @@ main {
   display: none;
 }
 
-#scan-result {
+[selector-ref=scan_result] {
   margin-top: 1.5rem;
   text-align: center;
   font-weight: bold;
   color: #2c3e50;
-}
-
-card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
 }
 
 .card {
@@ -330,4 +319,18 @@ card-grid {
 .card__body p {
   margin: 0.3rem 0;
   font-size: 0.95rem;
+}
+
+[scan-ref] {
+  padding: 2rem;
+  background: var(--darkGray);
+  border-radius: 1rem;
+}
+
+[visibility=hidde] {
+  display: none;
+}
+
+[visibility=show] {
+  display: "flex";
 }
