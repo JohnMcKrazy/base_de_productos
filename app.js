@@ -67,7 +67,7 @@ const renderEditorial = (editorial) => {
 
 const onScanSuccess = (decodedText, decodedResult) => {
     // handle the scanned code as you like, for example:
-    content.innerHTML = `<p>${decodedText}</p>`;
+    /* content.innerHTML = `<p>${decodedText}</p>`; */
     console.log(`Code matched = ${decodedText}`, decodedResult);
 };
 
