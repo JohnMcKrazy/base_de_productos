@@ -25,16 +25,17 @@
         <!-- Contenedor principal -->
         <main selector-ref="content">
             <p>Selecciona una editorial o escanea un código de barras.</p>
-
+        </main>
+        <div selector-ref="scanner_container">
             <div id="reader" selector-ref="reader" width="600px"></div>
+            <input type="file" id="qr-input-file" accept="image/*" />
             <div class="scanner">
                 <button selector-ref="start_scan">📷 Escanear Código</button>
                 <video selector-ref="video" autoplay playsinline></video>
             </div>
 
             <div selector-ref="scan_result"></div>
-        </main>
-
+        </div>
         <div selector-ref="cards_container"></div>
 
         <!-- Scripts -->

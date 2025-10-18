@@ -68,6 +68,7 @@ const renderEditorial = (editorial) => {
 const onScanSuccess = (decodedText, decodedResult) => {
     // handle the scanned code as you like, for example:
     console.log(`Code matched = ${decodedText}`, decodedResult);
+    content.innerHTML = `<p>${decodedText}</p>`;
 };
 
 const onScanFailure = (error) => {
@@ -78,3 +79,24 @@ const onScanFailure = (error) => {
 
 let html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: { width: 250, height: 250 } }, /* verbose= */ false);
 html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+
+const fileinput = document.getElementById("qr-input-file");
+fileinput.addEventListener("change", (e) => {
+    if (e.target.files.length == 0) {
+        // No file selected, ignore
+        return;
+    }
+
+    const imageFile = e.target.files[0];
+    // Scan QR Code
+    html5QrCode
+        .scanFile(imageFile, true)
+        .then((decodedText) => {
+            // success, use decodedText
+            console.log(decodedText);
+        })
+        .catch((err) => {
+            // failure, handle it.
+            console.log(`Error scanning file. Reason: ${err}`);
+        });
+});
