@@ -14,12 +14,12 @@ const deleteChildElements = (parentElement) => {
 
 const select = selector('[selector-ref="select"]');
 const optionTemplate = selector('[selector-ref="option_template"]').content;
-const cardTemplate = selector('[selector-ref="card-template"]').content;
-const lista = selector('[selector-ref="cards-container"]');
+const cardTemplate = selector('[selector-ref="card_template"]').content;
+const lista = selector('[selector-ref="cards_container"]');
 
 const video = selector("video");
-const startScanBtn = selector("start-scan");
-const resultContainer = selector("scan-result");
+const startScanBtn = selector("start_scan");
+const resultContainer = selector("scan_result");
 /* if (!select || !optionTemplate) return; */
 console.log(db);
 // Crear las opciones dinámicamente desde db.editoriales
@@ -64,3 +64,17 @@ const renderEditorial = (editorial) => {
         crearCarta(tituloItem);
     });
 };
+
+const onScanSuccess = (decodedText, decodedResult) => {
+    // handle the scanned code as you like, for example:
+    console.log(`Code matched = ${decodedText}`, decodedResult);
+};
+
+const onScanFailure = (error) => {
+    // handle scan failure, usually better to ignore and keep scanning.
+    // for example:
+    console.warn(`Code scan error = ${error}`);
+};
+
+let html5QrcodeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: { width: 250, height: 250 } }, /* verbose= */ false);
+html5QrcodeScanner.render(onScanSuccess, onScanFailure);

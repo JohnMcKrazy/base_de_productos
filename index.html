@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Biblioteca Editoriales</title>
+        <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
         <script type="module" src="app.js" async defer></script>
         <link rel="stylesheet" href="style.css" />
     </head>
@@ -25,26 +26,27 @@
         <main selector-ref="content">
             <p>Selecciona una editorial o escanea un código de barras.</p>
 
+            <div id="reader" selector-ref="reader" width="600px"></div>
             <div class="scanner">
-                <button id="start-scan">📷 Escanear Código</button>
-                <video id="video" autoplay playsinline></video>
+                <button selector-ref="start_scan">📷 Escanear Código</button>
+                <video selector-ref="video" autoplay playsinline></video>
             </div>
 
-            <div id="scan-result"></div>
+            <div selector-ref="scan_result"></div>
         </main>
 
-        <div selector-ref="cards-container"></div>
+        <div selector-ref="cards_container"></div>
 
         <!-- Scripts -->
     </body>
     <template selector-ref="option_template">
         <option value="" selector-ref="option"></option>
     </template>
-    <template selector-ref="card-template">
+    <template selector-ref="card_template">
         <div selector-ref="card" class="card">
-            <div selector-ref="card-header">
+            <div selector-ref="card_header">
                 <h3 selector-ref="title"></h3>
-                <span selector-ref="card-tag"></span>
+                <span selector-ref="card_tag"></span>
             </div>
             <div selector-ref="card-body">
                 <div selector-ref="card-buttons"></div>
