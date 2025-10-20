@@ -60,9 +60,19 @@ const crearItem = (tipo, item, edicion = "null") => {
     }
     return newCard;
 };
+const startActions = (action) => {
+    if (action === "start") {
+        selectorAll('[container-ref="ui"]').forEach((container) => {
+            container.setAttribute("visibility", "hidde");
+        });
+        ref("start_container").setAttribute("visibility", "show");
+    } else {
+        ref("start_container").setAttribute("visibility", "hidde");
+        ref(`${action}_container`).setAttribute("visibility", "show");
+    }
+};
 selector('[scan-ref="code"]').addEventListener("click", () => {
-    ref("start_content").setAttribute("visibility", "hidde");
-    ref("code_container").setAttribute("visibility", "show");
+    startActions("code");
 });
 
 selector("[btn-action='search_code']").addEventListener("click", () => {
@@ -81,8 +91,7 @@ selector("[btn-action='search_code']").addEventListener("click", () => {
     });
 });
 selector('[scan-ref="manual"]').addEventListener("click", () => {
-    ref("start_content").setAttribute("visibility", "hidde");
-    ref("manual_container").setAttribute("visibility", "show");
+    startActions("manual");
 
     console.log(db);
     // Crear las opciones dinámicamente desde db.editoriales
@@ -123,8 +132,7 @@ selector('[scan-ref="manual"]').addEventListener("click", () => {
     };
 });
 selector('[scan-ref="scanner"]').addEventListener("click", () => {
-    ref("start_content").setAttribute("visibility", "hidde");
-    ref("scanner_container").setAttribute("visibility", "show");
+    startActions("scanner");
 
     resultContainer.textContent = "📷 Escaneando...";
     try {
@@ -159,3 +167,9 @@ selector('[scan-ref="scanner"]').addEventListener("click", () => {
         console.error(error);
     }
 });
+
+selectorAll(`[selector-ref='back_to_start']`).forEach((btn) =>
+    btn.addEventListener("click", () => {
+        startActions("start");
+    })
+);

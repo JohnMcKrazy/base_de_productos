@@ -144,8 +144,11 @@ BODY {
     overflow-x: hidden;
     background: var(--bgC);
     text-rendering: optimizeSpeed;
+    max-height: 100vh;
     height: 100%;
     width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 :focus {
@@ -350,8 +353,8 @@ main {
     border-radius: 1rem;
 }
 [visibility="hidde"] {
-    display: none;
+    display: none !important;
 }
 [visibility="show"] {
-    display: flex;
+    display: flex !important;
 }
