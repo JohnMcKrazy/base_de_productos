@@ -152,7 +152,7 @@ selector('[scan-ref="scanner"]').addEventListener("click", () => {
             console.warn(`Code scan error = ${error}`);
         };
 
-        let codeScanner = new html5QrcodeScanner("reader", { fps: 10, qrbox: { width: 250, height: 250 } }, false);
+        let codeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: { width: 250, height: 250 } }, false);
         codeScanner.render(onScanSuccess, onScanFailure);
     } catch (error) {
         resultContainer.textContent = "❌ Error al acceder a la cámara.";
