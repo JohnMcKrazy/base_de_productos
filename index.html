@@ -10,15 +10,16 @@
     </head>
     <body color-scheme="dark">
         <!-- Barra de navegación -->
-        <nav class="navbar">
+        <!--  <nav class="navbar">
             <button type="button" selector-ref="theme">Theme</button>
-        </nav>
+        </nav> -->
         <main>
             <div class="colum_container container" selector-ref="start_content">
                 <button type="button" selector-ref="scan" scan-ref="manual">Busqueda Manual</button>
+                <button type="button" selector-ref="scan" scan-ref="code">Busqueda Por Codigo</button>
                 <button type="button" selector-ref="scan" scan-ref="scanner">Barcode Scanner</button>
             </div>
-            <div class="container" selector-ref="scanner_container" visibility="hidde">
+            <div class="colum_container container" selector-ref="scanner_container" visibility="hidde">
                 <h1 class="navbar__title">📷 Busqueda por escanes</h1>
 
                 <div selector-ref="scan_result"></div>
@@ -27,15 +28,24 @@
                     <button selector-ref="stop_scan">Parar el escaneo</button>
                 </div>
             </div>
-            <div class="container" selector-ref="manual_container" visibility="hidde">
+            <div class="colum_container container" selector-ref="code_container" visibility="hidde">
+                <h1 class="navbar__title">📚 Busqueda por Codigo</h1>
+                <div selector-ref="content"></div>
+                <input id="code_search" input-name="code" />
+                <label for="code_search">Buscar editorial:</label>
+                <button type="submit" btn-action="search_code">Buscar</button>
+                <p selector-ref="content_text" content-text="code">Datos de codigo</p>
+                <ul selector-ref="code_cards_container"></ul>
+            </div>
+            <div class="colum_container container" selector-ref="manual_container" visibility="hidde">
                 <h1 class="navbar__title">📚 Biblioteca Editoriales</h1>
                 <div selector-ref="content"></div>
                 <div class="navbar__search">
                     <label for="editoriales">Buscar editorial:</label>
                     <select id="editoriales" selector-ref="select"></select>
                 </div>
-                <p selector-ref="content_text">Busca por editorial</p>
-                <ul selector-ref="cards_container"></ul>
+                <p selector-ref="content_text" content-text="editorial">Busca por editorial</p>
+                <ul selector-ref="editorial_cards_container"></ul>
             </div>
         </main>
         <!-- Template de opción -->
