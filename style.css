@@ -223,16 +223,14 @@ I {
   font-weight: 400;
 }
 
-.navbar {
-  position: fixed;
-  top: 2rem;
-  left: 2rem;
+NAV {
   background: var(--darkGray);
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   padding: 1rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .container {

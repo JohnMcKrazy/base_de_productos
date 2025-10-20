@@ -239,14 +239,11 @@ I {
     font-style: italic;
     font-weight: 400;
 }
-.navbar {
-    position: fixed;
-    top: 2rem;
-    left: 2rem;
+NAV {
     background: var(--darkGray);
-    width: fit-content;
-    height: fit-content;
     padding: 1rem 2rem;
+    @include flex(row, space-between, center);
+    flex-wrap: wrap;
 }
 .container {
     width: 100%;
