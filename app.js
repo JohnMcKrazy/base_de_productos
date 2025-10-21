@@ -12,6 +12,8 @@ const select = ref("select");
 const optionTemplate = template("option").content;
 const cardTemplate = template("card").content;
 const editionContentTemplate = template("edition_content").content;
+const editorialContentTemplate = template("editorial_content").content;
+const itemBadgeTemplate = template("item_badge").content;
 const editorialLista = ref("editorial_cards_container");
 const codelLista = ref("code_cards_container");
 
@@ -41,6 +43,21 @@ const sanitizeInput = (inputValue) => {
     div.textContent = inputValue;
     return div.innerHTML;
 };
+const editionBadgeTemplate = template("edicion_badge").content;
+const createItemBagde = (item) => {
+    const newItemClone = itemBadgeTemplate.cloneNode(true);
+    const newItem = selector(`[selector-ref="item_badge"]`, newItemClone);
+    const code = selector(`[selector-ref="code"]`, newItemClone);
+    const edicion = selector(`[selector-ref="edition"]`, newItemClone);
+    const img = selector(`[selector-ref="img"]`, newItemClone);
+    console.log(item);
+    code.textContent = item.code;
+    edicion.textContent = item.edicion;
+    img.setAttribute("src", item.imagen);
+
+    return newItem;
+};
+const templateItemBadge = template("item_badge").content;
 const crearItem = (tipo, item, edicion = "null") => {
     console.log(tipo, item);
 
@@ -49,27 +66,43 @@ const crearItem = (tipo, item, edicion = "null") => {
     const cardTitle = selector(`[selector-ref="title"]`, newCard);
     cardTitle.textContent = item.nombre;
 
-    if (edicion) {
-        const newEdition = editionContentTemplate.cloneNode(true);
-        console.log(newEdition);
-        const editionDescription = selector(`[selector-ref="description"]`, newEdition);
-        const editionCode = selector(`[selector-ref="code"]`, newEdition);
-        const editionImg = selector(`[selector-ref="img"]`, newEdition);
+    if (tipo === "edicion") {
+        const newEditionClone = editionContentTemplate.cloneNode(true);
+        const newEdition = selector(`[selector-ref="edition_content"]`, newEditionClone);
+        const editionDescription = selector(`[selector-ref="description"]`, newEditionClone);
+        const editionCode = selector(`[selector-ref="code"]`, newEditionClone);
+        const edition = selector(`[selector-ref="edition"]`, newEditionClone);
+        const editionImg = selector(`[selector-ref="img"]`, newEditionClone);
         editionImg.setAttribute("src", edicion.imagen);
         editionDescription.textContent = edicion.descripcion;
+        edition.textContent = edicion.edicion;
         editionCode.textContent = edicion.codigo;
+        console.log(newEdition);
         card.appendChild(newEdition);
+    } else if (tipo === "editorial") {
+        const newEditorialClone = editorialContentTemplate.cloneNode(true);
+        const newEditorial = selector(`[selector-ref="editorial_content"]`, newEditorialClone);
+
+        item.ediciones.forEach((edicion) => {
+            console.log(item);
+            let thisItem = createItemBagde(edicion);
+            newEditorial.appendChild(thisItem);
+        });
+        card.appendChild(newEditorial);
     }
-    return newCard;
+    return card;
 };
+const inputCode = selector("[input-name='code']");
 const startActions = (action) => {
     if (action === "start") {
         selectorAll('[container-ref="ui"]').forEach((container) => {
             if (container.getAttribute("visibility") === "show") {
                 const ref = container.getAttribute("container-name");
-
                 container.setAttribute("visibility", "hidde");
             }
+            inputCode.value = "";
+            deleteChildElements(codelLista);
+            deleteChildElements(editorialLista);
         });
         ref("start_container").setAttribute("visibility", "show");
     } else {
@@ -86,14 +119,13 @@ const createTitle = (title) => {
     return newTitle;
 };
 selector("[btn-action='search_code']").addEventListener("click", () => {
-    const currentSearch = sanitizeInput(selector("[input-name='code']").value);
+    const currentSearch = sanitizeInput(inputCode.value);
     console.log("search code " + currentSearch);
     deleteChildElements(codelLista);
     let newCard;
     if (currentSearch !== "") {
         db.editoriales.forEach((editorial) => {
             editorial.items.forEach((item) => {
-                console.log(item.edition.find((edicion) => edicion.codigo === currentSearch));
                 item.ediciones.forEach((edicion) => {
                     if (edicion.codigo === currentSearch) {
                         newCard = crearItem("edicion", item, edicion);
@@ -101,34 +133,20 @@ selector("[btn-action='search_code']").addEventListener("click", () => {
                 });
             });
         });
+        console.log(newCard + " no esta vacio el input");
+        if (newCard === "" || newCard === undefined) {
+            newCard = createTitle("No se cuenta con ese producto en el inventario");
+            console.log(newCard + " el new card esta vacio");
+        }
     } else {
-        newCard = createTitle("");
+        newCard = createTitle("No se cuenta con ese producto en el inventario");
+        console.log(newCard + " esta vacio el input");
     }
+
+    console.log(newCard);
     codelLista.appendChild(newCard);
 });
-selector('[scan-ref="manual"]').addEventListener("click", () => {
-    startActions("manual");
-
-    console.log(db);
-    // Crear las opciones dinámicamente desde db.editoriales
-
-    db.editoriales.forEach((editorial) => {
-        const newOption = optionTemplate.cloneNode(true);
-        const option = selector(`[selector-ref="option"]`, newOption);
-        option.value = editorial.tag;
-        option.textContent = editorial.nombre;
-        select.appendChild(newOption);
-    });
-
-    // Evento al cambiar selección
-    select.addEventListener("change", (e) => {
-        const selectedTag = e.target.value;
-        const editorial = db.editoriales.find((ed) => ed.tag === selectedTag);
-        deleteChildElements(editorialLista);
-        renderEditorial(editorial);
-    });
-
-    const content = ref("content");
+const setOptions = () => {
     const editorialTitle = selector("[content-text='editorial']");
     const renderEditorial = (editorial) => {
         editorialTitle.textContent = "";
@@ -146,6 +164,29 @@ selector('[scan-ref="manual"]').addEventListener("click", () => {
             editorialLista.appendChild(newCard);
         });
     };
+    db.editoriales.forEach((editorial) => {
+        const newOption = optionTemplate.cloneNode(true);
+        const option = selector(`[selector-ref="option"]`, newOption);
+        option.value = editorial.nombre;
+        option.textContent = editorial.nombre;
+        select.appendChild(newOption);
+    });
+
+    // Evento al cambiar selección
+    select.addEventListener("change", (e) => {
+        const selectedTag = e.target.value;
+        const editorial = db.editoriales.find((ed) => ed.nombre === selectedTag);
+        console.log(editorial);
+        deleteChildElements(editorialLista);
+        renderEditorial(editorial);
+    });
+};
+setOptions();
+selector('[scan-ref="manual"]').addEventListener("click", () => {
+    startActions("manual");
+
+    console.log(db);
+    // Crear las opciones dinámicamente desde db.editoriales
 });
 const onScanSuccess = (decodedText, decodedResult) => {
     // handle the scanned code as you like, for example:
@@ -170,8 +211,8 @@ const onScanFailure = (error) => {
     // for example:
     console.warn(`Code scan error = ${error}`);
 };
-let codeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: { width: 250, height: 250 } }, false);
 selector('[scan-ref="scanner"]').addEventListener("click", () => {
+    let codeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: { width: 250, height: 250 } }, false);
     startActions("scanner");
     resultContainer.textContent = "📷 Escaneando...";
     codeScanner.render(onScanSuccess, onScanFailure);

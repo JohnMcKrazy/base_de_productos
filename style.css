@@ -106,6 +106,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border: none;
 }
 
 BODY {
@@ -115,7 +116,7 @@ BODY {
   background: var(--bgC);
   text-rendering: optimizeSpeed;
   max-height: 100vh;
-  height: 100hv;
+  height: 100vh;
   width: 100%;
   color: var(--tc);
 }
@@ -152,25 +153,11 @@ LABEL {
   height: auto;
 }
 
-INPUT[type=text],
-INPUT[type=email],
-TEXTAREA {
-  border: none;
-  border-radius: var(--sm);
-  background: var(--bgC);
-  color: var(--tc);
-  font-size: var(--fs_s);
-  padding: var(--lg) var(--md);
-}
-
 TEXTAREA {
   resize: none;
 }
 
 BUTTON {
-  padding: 0;
-  background: none;
-  border: none;
   cursor: pointer;
 }
 
@@ -242,15 +229,10 @@ NAV {
 }
 
 main {
-  align-items: center;
-  background-color: #2c3e50;
   padding: 1rem 2rem;
-  height: 95%;
-  width: 95%;
 }
 
 .scanner {
-  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -258,24 +240,15 @@ main {
 }
 
 [selector-ref=scan_result] {
-  margin-top: 1.5rem;
   text-align: center;
   font-weight: bold;
 }
 
 .btn {
-  background-color: var(--fc);
-  color: var(--whiteOff);
-  border: none;
   border-radius: 5px;
-  padding: 1 1.5rem;
   cursor: pointer;
   transition: background 0.2s ease;
 }
-.btn:hover {
-  background-color: #2980b9;
-}
-
 video {
   width: 300px;
   height: auto;
@@ -285,7 +258,6 @@ video {
 }
 
 .card {
-  background: var(--bgC_off);
   border-radius: 1rem;
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -306,7 +278,6 @@ video {
 
 [scan-ref] {
   padding: 2rem;
-  background: var(--bgC_off);
   border-radius: 1rem;
 }
 

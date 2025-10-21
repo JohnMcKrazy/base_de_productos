@@ -73,16 +73,33 @@
     <template selector-ref="option_template" template-ref="option">
         <option value="" selector-ref="option"></option>
     </template>
-    <template selector-ref="card_template" template-ref="card">
+    <template template-ref="card">
         <li selector-ref="card" class="card">
             <h1 selector-ref="title"></h1>
         </li>
     </template>
-    <template selector-ref="edition_content" template-ref="edition_content">
-        <div selector-ref="card_content">
-            <span selector-ref="code"></span>
+    <template template-ref="edition_content">
+        <div selector-ref="edition_content">
+            <h3 selector-ref="edition"></h3>
             <p selector-ref="description"></p>
             <img src="" selector-ref="img" />
+            <span selector-ref="code"></span>
         </div>
+    </template>
+    <template template-ref="editorial_content">
+        <div selector-ref="editorial_content"></div>
+    </template>
+    <template template-ref="item_badge">
+        <span selector-ref="item_badge">
+            <h3 selector-ref="edition"></h3>
+            <span selector-ref="code"></span>
+            <img src="" selector-ref="img" />
+        </span>
+    </template>
+    <template template-ref="edicion_badge">
+        <span selector-ref="edicion_badge">
+            <h4 selector-ref="nombre_edicion"></h4>
+            <div selector-ref="edicion_id"></div>
+        </span>
     </template>
 </html>
