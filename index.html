@@ -14,21 +14,25 @@
             <button type="button" selector-ref="theme">Theme</button>
         </nav> -->
         <main>
-            <div class="colum_container container" selector-ref="start_container" container-ref="ui">
+            <div class="colum_container container" selector-ref="start_container" container-ref="ui" container-name="start">
+                <nav selector-ref="nav">
+                    <h1 class="navbar__title">Menu Inicio</h1>
+                    <button type="button" selector-ref="tema">Tema</button>
+                </nav>
                 <button type="button" selector-ref="scan" scan-ref="manual">Busqueda Manual</button>
                 <button type="button" selector-ref="scan" scan-ref="code">Busqueda Por Codigo</button>
                 <button type="button" selector-ref="scan" scan-ref="scanner">Barcode Scanner</button>
             </div>
-            <div class="colum_container container" selector-ref="scanner_container" container-ref="ui" visibility="hidde">
+            <div class="colum_container container" selector-ref="scanner_container" container-ref="ui" visibility="hidde" container-name="scanner">
                 <nav selector-ref="nav">
                     <h1 class="navbar__title">📷 Escaner</h1>
                     <button type="button" selector-ref="back_to_start">Regresar a inicio</button>
                 </nav>
 
                 <div selector-ref="scan_result"></div>
-                <div id="reader" selector-ref="reader" width="600px"></div>
+                <div id="reader" width="600px" height="600px" selector-ref="reader"></div>
             </div>
-            <div class="colum_container container" selector-ref="code_container" container-ref="ui" visibility="hidde">
+            <div class="colum_container container" selector-ref="code_container" container-ref="ui" visibility="hidde" container-name="code">
                 <nav selector-ref="nav">
                     <h1 class="navbar__title">📚 Busqueda por Codigo</h1>
                     <button type="button" selector-ref="back_to_start">Regresar a inicio</button>
@@ -40,7 +44,7 @@
                 <p selector-ref="content_text" content-text="code">Datos de codigo</p>
                 <ul selector-ref="code_cards_container"></ul>
             </div>
-            <div class="colum_container container" selector-ref="manual_container" container-ref="ui" visibility="hidde">
+            <div class="colum_container container" selector-ref="manual_container" container-ref="ui" visibility="hidde" container-name="manual">
                 <nav selector-ref="nav">
                     <h1 class="navbar__title">📚 Biblioteca Editoriales</h1>
                     <button type="button" selector-ref="back_to_start">Regresar a inicio</button>
@@ -66,20 +70,19 @@
  -->
         <!-- Scripts -->
     </body>
-    <template selector-ref="option_template">
+    <template selector-ref="option_template" template-ref="option">
         <option value="" selector-ref="option"></option>
     </template>
-    <template selector-ref="card_template">
+    <template selector-ref="card_template" template-ref="card">
         <li selector-ref="card" class="card">
-            <div selector-ref="card_header">
-                <h1 selector-ref="title"></h1>
-                <h2 selector-ref="subtitle"></h2>
-            </div>
-            <div selector-ref="card-body">
-                <div selector-ref="card-buttons">
-                    <button type="">Ver Info</button>
-                </div>
-            </div>
+            <h1 selector-ref="title"></h1>
         </li>
+    </template>
+    <template selector-ref="edition_content" template-ref="edition_content">
+        <div selector-ref="card_content">
+            <span selector-ref="code"></span>
+            <p selector-ref="description"></p>
+            <img src="" selector-ref="img" />
+        </div>
     </template>
 </html>

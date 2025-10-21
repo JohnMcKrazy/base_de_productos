@@ -4,12 +4,14 @@ const $d = document;
 const selector = (tag, target = $d) => target.querySelector(`${tag}`);
 const selectorAll = (tag, target = $d) => target.querySelectorAll(`${tag}`);
 const ref = (ref) => selector(`[selector-ref='${ref}']`);
+const template = (template) => selector(`[template-ref='${template}']`);
 
 const pageBody = selector("BODY");
 
 const select = ref("select");
-const optionTemplate = ref("option_template").content;
-const cardTemplate = ref("card_template").content;
+const optionTemplate = template("option").content;
+const cardTemplate = template("card").content;
+const editionContentTemplate = template("edition_content").content;
 const editorialLista = ref("editorial_cards_container");
 const codelLista = ref("code_cards_container");
 
@@ -45,25 +47,29 @@ const crearItem = (tipo, item, edicion = "null") => {
     const newCard = cardTemplate.cloneNode(true);
     const card = selector(`[selector-ref="card"]`, newCard);
     const cardTitle = selector(`[selector-ref="title"]`, newCard);
-
-    const cardSubtitle = selector(`[selector-ref="subtitle"]`, newCard);
     cardTitle.textContent = item.nombre;
-    cardSubtitle.textContent = item.subtitle;
 
     if (edicion) {
-        const descripcion = document.createElement("span");
-        const id = document.createElement("span");
-        descripcion.textContent = edicion.descripcion;
-        id.textContent = edicion.id;
-        card.append(descripcion);
-        card.append(id);
+        const newEdition = editionContentTemplate.cloneNode(true);
+        console.log(newEdition);
+        const editionDescription = selector(`[selector-ref="description"]`, newEdition);
+        const editionCode = selector(`[selector-ref="code"]`, newEdition);
+        const editionImg = selector(`[selector-ref="img"]`, newEdition);
+        editionImg.setAttribute("src", edicion.imagen);
+        editionDescription.textContent = edicion.descripcion;
+        editionCode.textContent = edicion.codigo;
+        card.appendChild(newEdition);
     }
     return newCard;
 };
 const startActions = (action) => {
     if (action === "start") {
         selectorAll('[container-ref="ui"]').forEach((container) => {
-            container.setAttribute("visibility", "hidde");
+            if (container.getAttribute("visibility") === "show") {
+                const ref = container.getAttribute("container-name");
+
+                container.setAttribute("visibility", "hidde");
+            }
         });
         ref("start_container").setAttribute("visibility", "show");
     } else {
@@ -74,21 +80,31 @@ const startActions = (action) => {
 selector('[scan-ref="code"]').addEventListener("click", () => {
     startActions("code");
 });
-
+const createTitle = (title) => {
+    const newTitle = document.createElement("h1");
+    newTitle.textContent = title;
+    return newTitle;
+};
 selector("[btn-action='search_code']").addEventListener("click", () => {
     const currentSearch = sanitizeInput(selector("[input-name='code']").value);
     console.log("search code " + currentSearch);
     deleteChildElements(codelLista);
-    db.editoriales.forEach((editorial) => {
-        editorial.items.forEach((item) => {
-            item.ediciones.forEach((edicion) => {
-                if (edicion.codigo === currentSearch) {
-                    let newCard = crearItem("edicion", item, edicion);
-                    codelLista.append(newCard);
-                }
+    let newCard;
+    if (currentSearch !== "") {
+        db.editoriales.forEach((editorial) => {
+            editorial.items.forEach((item) => {
+                console.log(item.edition.find((edicion) => edicion.codigo === currentSearch));
+                item.ediciones.forEach((edicion) => {
+                    if (edicion.codigo === currentSearch) {
+                        newCard = crearItem("edicion", item, edicion);
+                    }
+                });
             });
         });
-    });
+    } else {
+        newCard = createTitle("");
+    }
+    codelLista.appendChild(newCard);
 });
 selector('[scan-ref="manual"]').addEventListener("click", () => {
     startActions("manual");
@@ -131,41 +147,34 @@ selector('[scan-ref="manual"]').addEventListener("click", () => {
         });
     };
 });
+const onScanSuccess = (decodedText, decodedResult) => {
+    // handle the scanned code as you like, for example:
+    console.log(decodedText);
+    editorialTitle.innerHTML = decodedText;
+    ref("scanner_container").setAttribute("visibility", "hidde");
+
+    console.log(`Code matched = ${decodedText}`, decodedResult);
+    db.editoriales.forEach((editorial) => {
+        editorial.items.forEach((item) => {
+            item.ediciones.forEach((edicion) => {
+                if (edicion.codigo === decodedText) {
+                    crearItem("item", item);
+                }
+            });
+        });
+    });
+};
+
+const onScanFailure = (error) => {
+    // handle scan failure, usually better to ignore and keep scanning.
+    // for example:
+    console.warn(`Code scan error = ${error}`);
+};
+let codeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: { width: 250, height: 250 } }, false);
 selector('[scan-ref="scanner"]').addEventListener("click", () => {
     startActions("scanner");
-
     resultContainer.textContent = "📷 Escaneando...";
-    try {
-        const onScanSuccess = (decodedText, decodedResult) => {
-            // handle the scanned code as you like, for example:
-
-            editorialTitle.innerHTML = decodedText;
-            ref("scanner_container").setAttribute("visibility", "hidde");
-
-            console.log(`Code matched = ${decodedText}`, decodedResult);
-            db.editoriales.forEach((editorial) => {
-                editorial.items.forEach((item) => {
-                    item.ediciones.forEach((edicion) => {
-                        if (edicion.codigo === decodedText) {
-                            crearItem("item", item);
-                        }
-                    });
-                });
-            });
-        };
-
-        const onScanFailure = (error) => {
-            // handle scan failure, usually better to ignore and keep scanning.
-            // for example:
-            console.warn(`Code scan error = ${error}`);
-        };
-
-        let codeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: { width: 250, height: 250 } }, false);
-        codeScanner.render(onScanSuccess, onScanFailure);
-    } catch (error) {
-        resultContainer.textContent = "❌ Error al acceder a la cámara.";
-        console.error(error);
-    }
+    codeScanner.render(onScanSuccess, onScanFailure);
 });
 
 selectorAll(`[selector-ref='back_to_start']`).forEach((btn) =>
@@ -173,3 +182,4 @@ selectorAll(`[selector-ref='back_to_start']`).forEach((btn) =>
         startActions("start");
     })
 );
+selector(`[selector-ref='tema']`).addEventListener("click", changeTheme);

@@ -9,27 +9,21 @@ export const db = {
         {
             id: 1,
             nombre: "Salvat",
-            tag: "salvat",
             items: [
                 {
                     nombre: "Mini Libros Disney",
-                    subtitle: "mini_libros_disney",
-                    tag_id: "2025",
                     ediciones: [
                         {
-                            id: 1,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
                         },
                         {
-                            id: 2,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
                         },
                         {
-                            id: 3,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
@@ -38,23 +32,18 @@ export const db = {
                 },
                 {
                     nombre: "Mini Libros Disney 2024",
-                    subtitle: "mini_libros_disney",
-                    tag_id: "2024",
                     ediciones: [
                         {
-                            id: 1,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
                         },
                         {
-                            id: 2,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
                         },
                         {
-                            id: 3,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
@@ -63,23 +52,18 @@ export const db = {
                 },
                 {
                     nombre: "Mini Libros Disney Julio Verne",
-                    subtitle: "mini_libros_disney",
-                    tag_id: "julio_verne",
                     ediciones: [
                         {
-                            id: 1,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
                         },
                         {
-                            id: 2,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
                         },
                         {
-                            id: 3,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
@@ -88,23 +72,18 @@ export const db = {
                 },
                 {
                     nombre: "Novelas Disney",
-                    subtitle: "novelas_disney",
-                    tag_id: "",
                     ediciones: [
                         {
-                            id: 1,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
                         },
                         {
-                            id: 2,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
                         },
                         {
-                            id: 3,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
@@ -114,29 +93,22 @@ export const db = {
             ],
         },
         {
-            id: 2,
             nombre: "Planeta",
-            tag: "planeta",
             items: [
                 {
                     nombre: "Planeta Metal",
-                    subtitle: "planeta_metal",
-                    tag_id: "",
                     ediciones: [
                         {
-                            id: 1,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
                         },
                         {
-                            id: 2,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
                         },
                         {
-                            id: 3,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
@@ -146,29 +118,22 @@ export const db = {
             ],
         },
         {
-            id: 3,
             nombre: "Loopa",
-            tag: "loopa",
             items: [
                 {
                     nombre: "Formula 1",
-                    subtitle: "formula_1",
-                    tag_id: "",
                     ediciones: [
                         {
-                            id: 1,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
                         },
                         {
-                            id: 2,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
                         },
                         {
-                            id: 3,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
@@ -177,23 +142,18 @@ export const db = {
                 },
                 {
                     nombre: "Formula 1 redbull",
-                    subtitle: "formula_1",
-                    tag_id: "redbull",
                     ediciones: [
                         {
-                            id: 1,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
                         },
                         {
-                            id: 2,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
                         },
                         {
-                            id: 3,
                             descripcion: "",
                             imagen: "",
                             codigo: "",
@@ -202,8 +162,6 @@ export const db = {
                 },
                 {
                     nombre: "Redbull",
-                    subtitle: "redbull",
-                    tag_id: "",
                     ediciones: [
                         {
                             codigo: "",
@@ -231,26 +189,30 @@ export const db = {
             items: [
                 {
                     nombre: "Lala",
-                    subtitle: "lala",
-                    tag_id: "",
                     ediciones: [
                         {
-                            id: 1,
-                            descripcion: "yaugurt",
-                            imagen: "",
+                            descripcion: "Yogurt",
+                            imagen: "https://pasajinak.com/wp-content/uploads/Yogurt-de-Fresa-1-litro-1.jpg",
                             codigo: "7502261257955",
                         },
                     ],
                 },
                 {
-                    nombre: "Lala",
-                    subtitle: "lala",
-                    tag_id: "",
+                    nombre: "Spicy Nuts",
                     ediciones: [
                         {
-                            id: 1,
-                            descripcion: "bombones",
-                            imagen: "",
+                            descripcion: "Cacahuates crujientes con cubierta de chile sabor limon",
+                            imagen: "https://m.media-amazon.com/images/I/61wzzM-XT4S._AC_SY300_SX300_QL70_ML2_.jpg",
+                            codigo: "7502261268708",
+                        },
+                    ],
+                },
+                {
+                    nombre: "Mr. Spidilik",
+                    ediciones: [
+                        {
+                            descripcion: "Bombones de forma de corazon",
+                            imagen: "https://m.media-amazon.com/images/I/61wzzM-XT4S._AC_SY300_SX300_QL70_ML2_.jpg",
                             codigo: "7506495071219",
                         },
                     ],
