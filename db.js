@@ -14,22 +14,22 @@ export const db = {
                     nombre: "Mini Libros Disney",
                     ediciones: [
                         {
-                            descripcion: "",
+                            descripcion: "Hector Servadac",
                             imagen: "",
-                            codigo: "",
+                            codigo: "00016",
                             edicion: "14",
                         },
                         {
-                            descripcion: "",
+                            descripcion: "Hector",
                             imagen: "",
-                            codigo: "",
-                            edicion: "15",
+                            codigo: "750999764996200016",
+                            edicion: "16 completo",
                         },
                         {
                             descripcion: "",
                             imagen: "",
                             codigo: "",
-                            edicion: "16",
+                            edicion: "17",
                         },
                     ],
                 },
@@ -265,3 +265,4 @@ export const db = {
         },
     ],
 };
+
