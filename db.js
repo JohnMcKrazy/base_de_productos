@@ -15,18 +15,6 @@ export const db = {
                     ediciones: [
                         {
                             descripcion: "",
-                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg",
-                            codigo: "00016",
-                            edicion: "14",
-                        },
-                        {
-                            descripcion: "Hector",
-                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg",
-                            codigo: "750999764996200016",
-                            edicion: "16 completo",
-                        },
-                        {
-                            descripcion: "",
                             imagen: "",
                             codigo: "",
                             edicion: "17",
@@ -60,22 +48,28 @@ export const db = {
                     nombre: "Mini Libros Disney Julio Verne",
                     ediciones: [
                         {
-                            descripcion: "Hector Servadac",
+                            descripcion: "Hector Servada - pequeño",
+                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg",
+                            codigo: "00016",
+                            edicion: "16",
+                        },
+                        {
+                            descripcion: "Hector Servada- completo",
+                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg",
+                            codigo: "750999764996200016",
+                            edicion: "16 completo",
+                        },
+                        {
+                            descripcion: "Hector Servadac - guion",
                             imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg",
                             codigo: "7509997649962-00016",
                             edicion: "16",
                         },
                          {
-                            descripcion: "Hector Servadac Punto",
+                            descripcion: "Hector Servadac - Punto",
                             imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg",
                             codigo: "7509997649962.00016",
                             edicion: "16 punto",
-                        },
-                        {
-                            descripcion: "",
-                            imagen: "",
-                            codigo: "",
-                            edicion: "3",
                         },
                     ],
                 },
@@ -265,6 +259,7 @@ export const db = {
         },
     ],
 };
+
 
 
 
