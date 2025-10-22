@@ -14,14 +14,14 @@ export const db = {
                     nombre: "Mini Libros Disney",
                     ediciones: [
                         {
-                            descripcion: "Hector Servadac",
-                            imagen: "",
+                            descripcion: "",
+                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg?v=1759173253",
                             codigo: "00016",
                             edicion: "14",
                         },
                         {
                             descripcion: "Hector",
-                            imagen: "",
+                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg?v=1759173253",
                             codigo: "750999764996200016",
                             edicion: "16 completo",
                         },
@@ -60,10 +60,10 @@ export const db = {
                     nombre: "Mini Libros Disney Julio Verne",
                     ediciones: [
                         {
-                            descripcion: "",
-                            imagen: "",
-                            codigo: "",
-                            edicion: "1",
+                            descripcion: "Hector Servadac",
+                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg?v=1759173253",
+                            codigo: "7509997649962-00016",
+                            edicion: "16",
                         },
                         {
                             descripcion: "",
@@ -265,5 +265,6 @@ export const db = {
         },
     ],
 };
+
 
 
