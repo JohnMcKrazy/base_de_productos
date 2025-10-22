@@ -124,7 +124,7 @@ const startActions = (action) => {
             deleteChildElements(editorialLista);
         });
         ref("start_container").setAttribute("visibility", "show");
-        codeScanner.clear();
+        html5QrCode.stop();
     } else {
         ref("start_container").setAttribute("visibility", "hidde");
         ref(`${action}_container`).setAttribute("visibility", "show");
