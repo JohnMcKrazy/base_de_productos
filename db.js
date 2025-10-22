@@ -244,7 +244,7 @@ export const db = {
                     ediciones: [
                         {
                             descripcion: "Bombones de forma de corazon",
-                            imagen: "https://http2.mlstatic.com/D_NQ_NP_2X_838340-MLA80483098823_112024-F.webp",
+                            imagen: "https://i5-mx.walmartimages.com/gr/images/product-images/img_large/00750179164996L.jpg",
                             codigo: "7506495071219",
                             edicion: "345",
                         },
@@ -265,6 +265,7 @@ export const db = {
         },
     ],
 };
+
 
 
 
