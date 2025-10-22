@@ -109,7 +109,6 @@ const scannerConfig = {
         Html5QrcodeSupportedFormats.RSS_EXPANDED,
     ],
 };
-let codeScanner = new Html5QrcodeScanner("reader", scannerConfig, false);
 const html5QrCode = new Html5Qrcode("reader");
 
 const startActions = (action) => {
@@ -118,13 +117,15 @@ const startActions = (action) => {
             if (container.getAttribute("visibility") === "show") {
                 const ref = container.getAttribute("container-name");
                 container.setAttribute("visibility", "hidde");
+                if (ref === "scanner") {
+                    html5QrCode.stop();
+                }
             }
             inputCode.value = "";
             deleteChildElements(codelLista);
             deleteChildElements(editorialLista);
         });
         ref("start_container").setAttribute("visibility", "show");
-        html5QrCode.stop();
     } else {
         ref("start_container").setAttribute("visibility", "hidde");
         ref(`${action}_container`).setAttribute("visibility", "show");
@@ -204,16 +205,12 @@ const setOptions = () => {
 setOptions();
 selector('[scan-ref="manual"]').addEventListener("click", () => {
     startActions("manual");
-
-    console.log(db);
-    // Crear las opciones dinámicamente desde db.editoriales
 });
 const onScanSuccess = (decodedText, decodedResult) => {
-    // handle the scanned code as you like, for example:
     console.log(decodedText);
-    /* ref("reader").setAttribute("visibility", "hidde"); */
 
     let itemSearched;
+    ref("scan_code").textContent = `${decodedText}`;
     console.log(`Code matched = ${decodedText}`, decodedResult);
     db.editoriales.forEach((editorial) => {
         editorial.items.forEach((item) => {

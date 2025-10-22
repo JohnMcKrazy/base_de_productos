@@ -36,6 +36,7 @@
                         <button type="button" class="btn" selector-ref="start_scanner">Buscar otro codigo</button>
                     </div>
                 </nav>
+                <h2 selector-ref="scan-code"></h2>
                 <div selector-ref="scan_result"></div>
                 <div id="reader" class="reader" selector-ref="reader"></div>
             </div>
@@ -45,11 +46,13 @@
                     <button type="button" class="btn" selector-ref="back_to_start">Regresar a inicio</button>
                 </nav>
                 <div selector-ref="content"></div>
-                <input id="code_search" input-name="code" />
-                <label for="code_search">Buscar editorial:</label>
-                <button type="button" class="btn" btn-action="search_code">Buscar</button>
+                <div class="btns_container">
+                    <label for="code_search">Buscar editorial:</label>
+                    <input id="code_search" input-name="code" />
+                    <button type="button" class="btn" btn-action="search_code">Buscar</button>
+                </div>
                 <p selector-ref="content_text" content-text="code">Datos de codigo</p>
-                <ul selector-ref="code_cards_container"></ul>
+                <ul selector-ref="code_cards_container" class="cards_container"></ul>
             </div>
             <div class="colum_container container" selector-ref="manual_container" container-ref="ui" visibility="hidde" container-name="manual">
                 <nav selector-ref="nav">
@@ -62,20 +65,9 @@
                     <select id="editoriales" selector-ref="select"></select>
                 </div>
                 <p selector-ref="content_text" class="" content-text="editorial">Busca por editorial</p>
-                <ul selector-ref="editorial_cards_container"></ul>
+                <ul selector-ref="editorial_cards_container" class="cards_container"></ul>
             </div>
         </main>
-        <!-- Template de opción -->
-
-        <!--    
-        
-        <main>
-            
-        </main>
-        
-        
- -->
-        <!-- Scripts -->
     </body>
     <template selector-ref="option_template" template-ref="option">
         <option value="" selector-ref="option"></option>
@@ -94,14 +86,14 @@
         </div>
     </template>
     <template template-ref="editorial_content">
-        <div selector-ref="editorial_content"></div>
+        <ul selector-ref="editorial_content" class="items_container"></ul>
     </template>
     <template template-ref="item_badge">
-        <span selector-ref="item_badge">
+        <li selector-ref="item_badge" class="item">
             <h3 selector-ref="edition"></h3>
             <span selector-ref="code"></span>
             <img src="" selector-ref="img" />
-        </span>
+        </li>
     </template>
     <template template-ref="edicion_badge">
         <span selector-ref="edicion_badge">

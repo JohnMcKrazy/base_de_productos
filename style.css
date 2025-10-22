@@ -215,6 +215,8 @@ NAV {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  max-width: 800px;
+  width: 100%;
 }
 
 .container {
@@ -225,7 +227,8 @@ NAV {
 .colum_container {
   display: flex;
   flex-direction: column;
-  justify-content: top;
+  justify-content: flex-start;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -250,6 +253,10 @@ main {
   cursor: pointer;
   transition: background 0.2s ease;
 }
+.btn:hover {
+  background: var(--fc_off);
+}
+
 video {
   width: 300px;
   height: auto;
@@ -268,15 +275,49 @@ INPUT {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  overflow: hidden;
 }
 .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
+.card IMG {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.item {
+  width: 7rem;
+}
+
+.items_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cards_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  width: 100%;
+}
 
 .reader {
-  max-width: 600px;
-  max-height: 600px;
+  max-width: 500px;
+  max-height: 500px;
+  width: 100%;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.btns_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {
@@ -295,6 +336,7 @@ INPUT {
 [scan-ref] {
   padding: 2rem;
   border-radius: 1rem;
+  width: 100%;
 }
 
 [visibility=hidde] {
