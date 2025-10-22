@@ -76,6 +76,28 @@ export const db = {
                             imagen: "https://http2.mlstatic.com/D_NQ_NP_2X_937811-MLM86024576820_062025-F.webp",
                             codigo: "",
                             edicion: "3",
+                            descripcion: "Hector Servada - pequeño",
+                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg",
+                            codigo: "00016",
+                            edicion: "16",
+                        },
+                        {
+                            descripcion: "Hector Servada- completo",
+                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg",
+                            codigo: "750999764996200016",
+                            edicion: "16 completo",
+                        },
+                        {
+                            descripcion: "Hector Servadac - guion",
+                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg",
+                            codigo: "7509997649962-00016",
+                            edicion: "16",
+                        },
+                        {
+                            descripcion: "Hector Servadac - Punto",
+                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg",
+                            codigo: "7509997649962.00016",
+                            edicion: "16 punto",
                         },
                     ],
                 },
@@ -239,18 +261,18 @@ export const db = {
                     ediciones: [
                         {
                             descripcion: "Cacahuates crujientes con cubierta de chile sabor limon",
-                            imagen: "https://m.media-amazon.com/images/I/61wzzM-XT4S._AC_SY300_SX300_QL70_ML2_.jpg",
+                            imagen: "https://www.tiendas3b.com/wp-content/uploads/2025/05/KONICHIWA_Spicy_150g_1.jpg",
                             codigo: "7502261268708",
                             edicion: "56",
                         },
                     ],
                 },
                 {
-                    nombre: "Mr. Spidilik",
+                    nombre: "Grate Value Malvabiscos",
                     ediciones: [
                         {
                             descripcion: "Bombones de forma de corazon",
-                            imagen: "https://m.media-amazon.com/images/I/61wzzM-XT4S._AC_SY300_SX300_QL70_ML2_.jpg",
+                            imagen: "https://i5-mx.walmartimages.com/gr/images/product-images/img_large/00750179164996L.jpg",
                             codigo: "7506495071219",
                             edicion: "345",
                         },
