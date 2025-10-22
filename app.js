@@ -54,13 +54,11 @@ const createItemBagde = (item) => {
     console.log(item);
     code.textContent = item.code;
     edicion.textContent = item.edicion;
-    if(item.imagen==="" || item.imagen === undefined){
-     img.setAttribute("src",noImgLink);   
+    if(item.imagen === "" || item.imagen === undefined){
+        img.setAttribute("src",noImgLink);   
     }else{
-            img.setAttribute("src", item.imagen);
+        img.setAttribute("src", item.imagen);
     }
-
-
     return newItem;
 };
 const templateItemBadge = template("item_badge").content;
@@ -79,11 +77,11 @@ const crearItem = (tipo, item, edicion = "null") => {
         const editionCode = selector(`[selector-ref="code"]`, newEditionClone);
         const edition = selector(`[selector-ref="edition"]`, newEditionClone);
         const editionImg = selector(`[selector-ref="img"]`, newEditionClone);
-        if(edicion.imagen==="" || edicion.imagen === undefined){
-     editionImg.setAttribute("src",noImgLink);   
-    }else{
+        if(edicion.imagen=== "" || edicion.imagen === undefined){
+            editionImg.setAttribute("src",noImgLink);   
+        }else{
             editionImg.setAttribute("src", edicion.imagen);
-    }
+        }
         
         editionDescription.textContent = edicion.descripcion;
         edition.textContent = edicion.edicion;
@@ -257,6 +255,7 @@ selectorAll(`[selector-ref='back_to_start']`).forEach((btn) =>
     })
 );
 selector(`[selector-ref='tema']`).addEventListener("click", changeTheme);
+
 
 
 
