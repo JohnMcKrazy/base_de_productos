@@ -43,6 +43,7 @@ const sanitizeInput = (inputValue) => {
     div.textContent = inputValue;
     return div.innerHTML;
 };
+const noImgLink="https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg"
 const editionBadgeTemplate = template("edicion_badge").content;
 const createItemBagde = (item) => {
     const newItemClone = itemBadgeTemplate.cloneNode(true);
@@ -53,7 +54,12 @@ const createItemBagde = (item) => {
     console.log(item);
     code.textContent = item.code;
     edicion.textContent = item.edicion;
-    img.setAttribute("src", item.imagen);
+    if(item.imagen==="" || item.imagen === undefined){
+     img.setAttribute("src","noImgLink");   
+    }else{
+            img.setAttribute("src", item.imagen);
+    }
+
 
     return newItem;
 };
@@ -73,7 +79,12 @@ const crearItem = (tipo, item, edicion = "null") => {
         const editionCode = selector(`[selector-ref="code"]`, newEditionClone);
         const edition = selector(`[selector-ref="edition"]`, newEditionClone);
         const editionImg = selector(`[selector-ref="img"]`, newEditionClone);
-        editionImg.setAttribute("src", edicion.imagen);
+        if(item.imagen==="" || item.imagen === undefined){
+     editionImg.setAttribute("src","noImgLink");   
+    }else{
+            editionImg.setAttribute("src", edicion.imagen);
+    }
+        
         editionDescription.textContent = edicion.descripcion;
         edition.textContent = edicion.edicion;
         editionCode.textContent = edicion.codigo;
@@ -246,3 +257,4 @@ selectorAll(`[selector-ref='back_to_start']`).forEach((btn) =>
     })
 );
 selector(`[selector-ref='tema']`).addEventListener("click", changeTheme);
+
