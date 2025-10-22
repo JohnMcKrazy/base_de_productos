@@ -93,6 +93,25 @@ const crearItem = (tipo, item, edicion = "null") => {
     return card;
 };
 const inputCode = selector("[input-name='code']");
+const scannerConfig = {
+    fps: 10,
+    qrbox: { width: 250, height: 250 },
+    formatsToSupport: [
+        Html5QrcodeSupportedFormats.QR_CODE,
+        Html5QrcodeSupportedFormats.EAN_13,
+        Html5QrcodeSupportedFormats.ITF,
+        Html5QrcodeSupportedFormats.UPC_A,
+        Html5QrcodeSupportedFormats.UPC_E,
+        Html5QrcodeSupportedFormats.RSS_14,
+        Html5QrcodeSupportedFormats.CODE_39,
+        Html5QrcodeSupportedFormats.CODE_93,
+        Html5QrcodeSupportedFormats.CODE_128,
+        Html5QrcodeSupportedFormats.RSS_EXPANDED,
+    ],
+};
+let codeScanner = new Html5QrcodeScanner("reader", scannerConfig, false);
+const html5QrCode = new Html5Qrcode("reader");
+
 const startActions = (action) => {
     if (action === "start") {
         selectorAll('[container-ref="ui"]').forEach((container) => {
@@ -105,6 +124,7 @@ const startActions = (action) => {
             deleteChildElements(editorialLista);
         });
         ref("start_container").setAttribute("visibility", "show");
+        codeScanner.clear();
     } else {
         ref("start_container").setAttribute("visibility", "hidde");
         ref(`${action}_container`).setAttribute("visibility", "show");
@@ -191,31 +211,33 @@ selector('[scan-ref="manual"]').addEventListener("click", () => {
 const onScanSuccess = (decodedText, decodedResult) => {
     // handle the scanned code as you like, for example:
     console.log(decodedText);
-    editorialTitle.innerHTML = decodedText;
-    ref("scanner_container").setAttribute("visibility", "hidde");
+    /* ref("reader").setAttribute("visibility", "hidde"); */
 
+    let itemSearched;
     console.log(`Code matched = ${decodedText}`, decodedResult);
     db.editoriales.forEach((editorial) => {
         editorial.items.forEach((item) => {
             item.ediciones.forEach((edicion) => {
-                if (edicion.codigo === decodedText) {
-                    crearItem("item", item);
+                if (edicion.codigo === decodedText.toString()) {
+                    itemSearched = crearItem("edicion", item, edicion);
                 }
             });
         });
     });
+    deleteChildElements(resultContainer);
+    html5QrCode.stop();
+    resultContainer.appendChild(itemSearched);
 };
+const startScanner = () => {
+    deleteChildElements(resultContainer);
+    html5QrCode.start({ facingMode: "environment" }, scannerConfig, onScanSuccess);
+};
+ref("start_scanner").addEventListener("click", startScanner);
 
-const onScanFailure = (error) => {
-    // handle scan failure, usually better to ignore and keep scanning.
-    // for example:
-    console.warn(`Code scan error = ${error}`);
-};
 selector('[scan-ref="scanner"]').addEventListener("click", () => {
-    let codeScanner = new Html5QrcodeScanner("reader", { fps: 10, qrbox: { width: 250, height: 250 } }, false);
     startActions("scanner");
-    resultContainer.textContent = "📷 Escaneando...";
-    codeScanner.render(onScanSuccess, onScanFailure);
+    startScanner();
+    /* codeScanner.render(onScanSuccess, onScanFailure); */
 });
 
 selectorAll(`[selector-ref='back_to_start']`).forEach((btn) =>

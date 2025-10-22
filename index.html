@@ -17,7 +17,7 @@
             <div class="colum_container container" selector-ref="start_container" container-ref="ui" container-name="start">
                 <nav selector-ref="nav">
                     <h1 class="navbar__title">Menu Inicio</h1>
-                    <button type="button" selector-ref="tema">Tema</button>
+                    <button type="button" class="btn" selector-ref="tema">Tema</button>
                 </nav>
                 <button type="button" selector-ref="scan" scan-ref="manual">Busqueda Manual</button>
                 <button type="button" selector-ref="scan" scan-ref="code">Busqueda Por Codigo</button>
@@ -25,36 +25,38 @@
             </div>
             <div class="colum_container container" selector-ref="scanner_container" container-ref="ui" visibility="hidde" container-name="scanner">
                 <nav selector-ref="nav">
-                    <h1 class="navbar__title">📷 Escaner</h1>
-                    <button type="button" selector-ref="back_to_start">Regresar a inicio</button>
+                    <h1 class="navbar__title">Scanner</h1>
+                    <div class="btns_container">
+                        <button type="button" class="btn" selector-ref="back_to_start">Regresar a inicio</button>
+                        <button type="button" class="btn" selector-ref="start_scanner">Buscar otro codigo</button>
+                    </div>
                 </nav>
-
                 <div selector-ref="scan_result"></div>
-                <div id="reader" width="600px" height="600px" selector-ref="reader"></div>
+                <div id="reader" class="reader" selector-ref="reader"></div>
             </div>
             <div class="colum_container container" selector-ref="code_container" container-ref="ui" visibility="hidde" container-name="code">
                 <nav selector-ref="nav">
-                    <h1 class="navbar__title">📚 Busqueda por Codigo</h1>
-                    <button type="button" selector-ref="back_to_start">Regresar a inicio</button>
+                    <h1 class="navbar__title">Busqueda por Codigo</h1>
+                    <button type="button" class="btn" selector-ref="back_to_start">Regresar a inicio</button>
                 </nav>
                 <div selector-ref="content"></div>
                 <input id="code_search" input-name="code" />
                 <label for="code_search">Buscar editorial:</label>
-                <button type="submit" btn-action="search_code">Buscar</button>
+                <button type="button" class="btn" btn-action="search_code">Buscar</button>
                 <p selector-ref="content_text" content-text="code">Datos de codigo</p>
                 <ul selector-ref="code_cards_container"></ul>
             </div>
             <div class="colum_container container" selector-ref="manual_container" container-ref="ui" visibility="hidde" container-name="manual">
                 <nav selector-ref="nav">
-                    <h1 class="navbar__title">📚 Biblioteca Editoriales</h1>
-                    <button type="button" selector-ref="back_to_start">Regresar a inicio</button>
+                    <h1 class="navbar__title">Biblioteca Editoriales</h1>
+                    <button type="button" class="btn" selector-ref="back_to_start">Regresar a inicio</button>
                 </nav>
                 <div selector-ref="content"></div>
                 <div class="navbar__search">
                     <label for="editoriales">Buscar editorial:</label>
                     <select id="editoriales" selector-ref="select"></select>
                 </div>
-                <p selector-ref="content_text" content-text="editorial">Busca por editorial</p>
+                <p selector-ref="content_text" class="" content-text="editorial">Busca por editorial</p>
                 <ul selector-ref="editorial_cards_container"></ul>
             </div>
         </main>

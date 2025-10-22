@@ -250,6 +250,17 @@ export const db = {
                         },
                     ],
                 },
+                {
+                    nombre: "Rellenitos",
+                    ediciones: [
+                        {
+                            descripcion: "Panquesitos rellenos de chocolate",
+                            imagen: "https://http2.mlstatic.com/D_NQ_NP_2X_788306-MLM87728820043_072025-F.webp",
+                            codigo: "7502261269255",
+                            edicion: "345",
+                        },
+                    ],
+                },
             ],
         },
     ],

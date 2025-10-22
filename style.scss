@@ -264,6 +264,9 @@ video {
     border-radius: 10px;
     display: none;
 }
+INPUT {
+    padding: 1rem;
+}
 .card {
     border-radius: 1rem;
     padding: 2rem;
@@ -275,6 +278,15 @@ video {
         transform: translateY(-4px);
         box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
     }
+}
+.reader {
+    max-width: 600px;
+    max-height: 600px;
+}
+.btn {
+    background: var(--fc);
+    color: var(--whiteOff);
+    padding: 1rem 2rem;
 }
 [selector-ref="card_content"] {
     IMG {
