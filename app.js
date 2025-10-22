@@ -55,7 +55,7 @@ const createItemBagde = (item) => {
     code.textContent = item.code;
     edicion.textContent = item.edicion;
     if(item.imagen==="" || item.imagen === undefined){
-     img.setAttribute("src","noImgLink");   
+     img.setAttribute("src",noImgLink);   
     }else{
             img.setAttribute("src", item.imagen);
     }
@@ -80,7 +80,7 @@ const crearItem = (tipo, item, edicion = "null") => {
         const edition = selector(`[selector-ref="edition"]`, newEditionClone);
         const editionImg = selector(`[selector-ref="img"]`, newEditionClone);
         if(item.imagen==="" || item.imagen === undefined){
-     editionImg.setAttribute("src","noImgLink");   
+     editionImg.setAttribute("src",noImgLink);   
     }else{
             editionImg.setAttribute("src", edicion.imagen);
     }
@@ -257,4 +257,5 @@ selectorAll(`[selector-ref='back_to_start']`).forEach((btn) =>
     })
 );
 selector(`[selector-ref='tema']`).addEventListener("click", changeTheme);
+
 
