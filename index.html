@@ -59,7 +59,9 @@
                 <div selector-ref="content"></div>
                 <div class="navbar__search">
                     <label for="editoriales">Buscar editorial:</label>
-                    <select id="editoriales" selector-ref="select"></select>
+                    <select id="editoriales" selector-ref="select">
+                        <option value="Seleccionar"  selector-ref="option"></option>
+                    </select>
                 </div>
                 <p selector-ref="content_text" class="" content-text="editorial">Busca por editorial</p>
                 <ul selector-ref="editorial_cards_container"></ul>
@@ -110,3 +112,4 @@
         </span>
     </template>
 </html>
+
