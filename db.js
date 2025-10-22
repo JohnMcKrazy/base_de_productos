@@ -65,11 +65,11 @@ export const db = {
                             codigo: "7509997649962-00016",
                             edicion: "16",
                         },
-                        {
-                            descripcion: "",
-                            imagen: "",
-                            codigo: "",
-                            edicion: "2",
+                         {
+                            descripcion: "Hector Servadac Punto",
+                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg",
+                            codigo: "7509997649962.00016",
+                            edicion: "16",
                         },
                         {
                             descripcion: "",
@@ -265,6 +265,7 @@ export const db = {
         },
     ],
 };
+
 
 
 
