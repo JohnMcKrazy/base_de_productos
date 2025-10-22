@@ -15,13 +15,13 @@ export const db = {
                     ediciones: [
                         {
                             descripcion: "",
-                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg?v=1759173253",
+                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg",
                             codigo: "00016",
                             edicion: "14",
                         },
                         {
                             descripcion: "Hector",
-                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg?v=1759173253",
+                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg",
                             codigo: "750999764996200016",
                             edicion: "16 completo",
                         },
@@ -61,7 +61,7 @@ export const db = {
                     ediciones: [
                         {
                             descripcion: "Hector Servadac",
-                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg?v=1759173253",
+                            imagen: "https://tushoppi.mx/cdn/shop/files/0000s_0072_LIBROSENMINIATURAJULIOVERNEVIAJESEXTRAORDINARIOSVOL.II-20250926-03.jpg",
                             codigo: "7509997649962-00016",
                             edicion: "16",
                         },
@@ -265,6 +265,7 @@ export const db = {
         },
     ],
 };
+
 
 
 
