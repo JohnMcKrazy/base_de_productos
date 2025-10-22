@@ -79,7 +79,7 @@ const crearItem = (tipo, item, edicion = "null") => {
         const editionCode = selector(`[selector-ref="code"]`, newEditionClone);
         const edition = selector(`[selector-ref="edition"]`, newEditionClone);
         const editionImg = selector(`[selector-ref="img"]`, newEditionClone);
-        if(item.imagen==="" || item.imagen === undefined){
+        if(edicion.imagen==="" || edicion.imagen === undefined){
      editionImg.setAttribute("src",noImgLink);   
     }else{
             editionImg.setAttribute("src", edicion.imagen);
@@ -257,5 +257,6 @@ selectorAll(`[selector-ref='back_to_start']`).forEach((btn) =>
     })
 );
 selector(`[selector-ref='tema']`).addEventListener("click", changeTheme);
+
 
 
