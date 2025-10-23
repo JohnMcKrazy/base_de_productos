@@ -269,8 +269,34 @@ video {
     border-radius: 10px;
     display: none;
 }
+:root {
+    --iconSize: 2rem;
+}
 INPUT {
-    padding: 1rem;
+    display: block;
+    background: none;
+    padding: 0.5rem;
+}
+.label_search {
+    border-radius: 2rem;
+    position: relative;
+    padding: 1rem 3rem 1rem 1rem;
+    background: var(--bgC_off);
+    .search_btn {
+        position: absolute;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: var(--iconSize);
+        height: var(--iconSize);
+        border-radius: 50%;
+        background: none;
+        SVG {
+            fill: var(--white);
+            width: var(--iconSize);
+            height: var(--iconSize);
+        }
+    }
 }
 .card {
     border-radius: 1rem;
@@ -278,28 +304,51 @@ INPUT {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-    width: 100%;
+    background: var(--bgC_off);
+    width: auto;
+    max-width: 40rem;
     overflow: hidden;
     &:hover {
         transform: translateY(-4px);
         box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
     }
+
+    [selector-ref="title"] {
+        text-align: center;
+    }
+    [selector-ref="edition_content"] {
+        @include flex(column, flex-start, center);
+        gap: 1rem;
+    }
+
     IMG {
-        object-fit: cover;
+        height: 20rem;
+        width: auto;
+        object-fit: contain;
     }
 }
 .item {
-    width: 7rem;
+    width: 10rem;
+    background: var(--bgC);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    IMG {
+        width: auto;
+        max-height: 10rem;
+        max-width: 8rem;
+        object-fit: contain;
+    }
 }
 .items_container {
-    @include flex(row, space-between, center);
+    @include flex(row, center, flex-start);
     flex-wrap: wrap;
+    gap: 0.5rem;
 }
 .cards_container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    @include flex(row, center, flex-start);
+    flex-wrap: wrap;
     width: 100%;
+    gap: 1rem;
 }
 .reader {
     max-width: 500px;
@@ -309,27 +358,26 @@ INPUT {
 }
 .btns_container {
     @include flex(row, center, center);
+    gap: 1rem;
 }
 .btn {
     background: var(--fc);
     color: var(--whiteOff);
     padding: 1rem 2rem;
 }
-[selector-ref="card_content"] {
-    IMG {
-        max-height: 15rem;
-        max-width: 15rem;
-        object-fit: contain;
-    }
-}
+
 [scan-ref] {
     padding: 2rem;
     border-radius: 1rem;
     width: 100%;
+    background: var(--bgC_off);
 }
 [visibility="hidde"] {
     display: none !important;
 }
 [visibility="show"] {
     display: flex !important;
+}
+select {
+    padding: 1rem;
 }

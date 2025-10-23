@@ -1,4 +1,16 @@
 import { db } from "./db.js";
+const API = "https://docs.google.com/spreadsheets/d/168CbH6UqvhrdAsS0D0bRrqMDU2NVlL58NuaB2AU2r5Y/edit";
+
+const fetch = async (link) => {
+    const raw = await fetch(link);
+    try {
+        /* const data = await raw.json(); */
+        console.log(raw);
+        /* return data; */
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 const $d = document;
 const selector = (tag, target = $d) => target.querySelector(`${tag}`);
