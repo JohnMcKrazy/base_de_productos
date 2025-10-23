@@ -1,112 +1,118 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Biblioteca Editoriales</title>
-        <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
-        <script type="module" src="app.js" async defer></script>
-        <!-- GOOGLE FONTS^-->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
-        <!-- GOOGLE FONTS^-->
-        <link rel="stylesheet" href="style.css" />
-    </head>
-    <body color-scheme="dark">
-        <!-- Barra de navegación -->
-        <!--  <nav class="navbar">
-            <button type="button" selector-ref="theme">Theme</button>
-        </nav> -->
-        <main>
-            <div class="colum_container container" selector-ref="start_container" container-ref="ui" container-name="start">
-                <nav selector-ref="nav">
-                    <h1 class="navbar__title">Menu Inicio</h1>
-                    <button type="button" class="btn" selector-ref="tema">Tema</button>
-                </nav>
-                <button type="button" selector-ref="scan" scan-ref="manual">Busqueda Manual</button>
-                <button type="button" selector-ref="scan" scan-ref="code">Busqueda Por Codigo</button>
-                <button type="button" selector-ref="scan" scan-ref="scanner">Barcode Scanner</button>
-            </div>
-            <div class="colum_container container" selector-ref="scanner_container" container-ref="ui" visibility="hidde" container-name="scanner">
-                <nav selector-ref="nav">
-                    <h1 class="navbar__title">Scanner</h1>
-                    <div class="btns_container">
-                        <button type="button" class="btn" selector-ref="back_to_start">Regresar a inicio</button>
-                        <button type="button" class="btn" selector-ref="start_scanner">Buscar otro codigo</button>
-                    </div>
-                </nav>
-                <h2 selector-ref="scan_code"></h2>
-                <div selector-ref="scan_result"></div>
-                <div id="reader" class="reader" selector-ref="reader"></div>
-            </div>
-            <div class="colum_container container" selector-ref="code_container" container-ref="ui" visibility="hidde" container-name="code">
-                <nav selector-ref="nav">
-                    <h1 class="navbar__title">Codigo</h1>
-                    <button type="button" class="btn" selector-ref="back_to_start">Regresar a inicio</button>
-                </nav>
-                <div selector-ref="content"></div>
-                <div class="btns_container">
-                    <label class="label_search" for="code_search">
-                        <input id="code_search" input-name="code" />
-                        <button type="button" class="search_btn" btn-action="search_code">
-                            <svg xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z"
-                                ></path>
-                            </svg>
-                        </button>
-                    </label>
-                </div>
-                <p selector-ref="content_text" content-text="code">Datos de codigo</p>
-                <ul selector-ref="code_cards_container" class="cards_container"></ul>
-            </div>
-            <div class="colum_container container" selector-ref="manual_container" container-ref="ui" visibility="hidde" container-name="manual">
-                <nav selector-ref="nav">
-                    <h1 class="navbar__title">Editoriales</h1>
-                    <button type="button" class="btn" selector-ref="back_to_start">Regresar a inicio</button>
-                </nav>
-                <div selector-ref="content"></div>
-                <div class="navbar__search">
-                    <select id="editoriales" selector-ref="select">
-                        <option value="Seleccionar" selector-ref="option">Seleccionar</option>
-                    </select>
-                </div>
-                <p selector-ref="content_text" class="" content-text="editorial">Busca por editorial</p>
-                <ul selector-ref="editorial_cards_container" class="cards_container"></ul>
-            </div>
-        </main>
-    </body>
-    <template selector-ref="option_template" template-ref="option">
-        <option value="" selector-ref="option"></option>
-    </template>
-    <template template-ref="card">
-        <li selector-ref="card" class="card">
-            <h1 selector-ref="title"></h1>
-        </li>
-    </template>
-    <template template-ref="edition_content">
-        <div selector-ref="edition_content">
-            <h3 selector-ref="edition"></h3>
-            <p selector-ref="description"></p>
-            <img src="" selector-ref="img" />
-            <span selector-ref="code"></span>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca Editoriales</title>
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script type="module" src="app.js" async defer></script>
+    <!-- GOOGLE FONTS^-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet" />
+    <!-- GOOGLE FONTS^-->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body color-scheme="dark">
+
+    <main>
+        <div class="colum_container container" selector-ref="start_container" container-ref="ui" container-name="start">
+            <nav selector-ref="nav">
+                <h1 class="navbar__title">Menu Inicio</h1>
+                <button type="button" class="btn" selector-ref="tema">Tema</button>
+            </nav>
+            <button type="button" selector-ref="scan" scan-ref="manual">Busqueda Manual</button>
+            <button type="button" selector-ref="scan" scan-ref="code">Busqueda Por Codigo</button>
+            <button type="button" selector-ref="scan" scan-ref="scanner">Barcode Scanner</button>
         </div>
-    </template>
-    <template template-ref="editorial_content">
-        <ul selector-ref="editorial_content" class="items_container"></ul>
-    </template>
-    <template template-ref="item_badge">
-        <li selector-ref="item_badge" class="item">
-            <h3 selector-ref="edition"></h3>
-            <span selector-ref="code"></span>
-            <img src="" selector-ref="img" />
-        </li>
-    </template>
-    <template template-ref="edicion_badge">
-        <span selector-ref="edicion_badge">
-            <h4 selector-ref="nombre_edicion"></h4>
-            <div selector-ref="edicion_id"></div>
-        </span>
-    </template>
+        <div class="colum_container container" selector-ref="scanner_container" container-ref="ui" visibility="hidde"
+            container-name="scanner">
+            <nav selector-ref="nav">
+                <h1 class="navbar__title">Scanner</h1>
+                <div class="btns_container">
+                    <button type="button" class="btn" selector-ref="back_to_start">Regresar a inicio</button>
+                    <button type="button" class="btn" selector-ref="start_scanner">Buscar otro codigo</button>
+                </div>
+            </nav>
+            <h2 selector-ref="scan_code"></h2>
+            <div selector-ref="scan_result"></div>
+            <div id="reader" class="reader" selector-ref="reader"></div>
+        </div>
+        <div class="colum_container container" selector-ref="code_container" container-ref="ui" visibility="hidde"
+            container-name="code">
+            <nav selector-ref="nav">
+                <h1 class="navbar__title">Codigo</h1>
+                <button type="button" class="btn" selector-ref="back_to_start">Regresar a inicio</button>
+            </nav>
+            <h2 selector-ref="scan_code"></h2>
+
+            <div selector-ref="content"></div>
+            <div class="btns_container">
+                <label class="label_search" for="code_search">
+                    <input id="code_search" input-name="code" />
+                    <button type="button" class="search_btn" btn-action="search_code">
+                        <svg xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M18.031 16.6168L22.3137 20.8995L20.8995 22.3137L16.6168 18.031C15.0769 19.263 13.124 20 11 20C6.032 20 2 15.968 2 11C2 6.032 6.032 2 11 2C15.968 2 20 6.032 20 11C20 13.124 19.263 15.0769 18.031 16.6168ZM16.0247 15.8748C17.2475 14.6146 18 12.8956 18 11C18 7.1325 14.8675 4 11 4C7.1325 4 4 7.1325 4 11C4 14.8675 7.1325 18 11 18C12.8956 18 14.6146 17.2475 15.8748 16.0247L16.0247 15.8748Z">
+                            </path>
+                        </svg>
+                    </button>
+                </label>
+            </div>
+            <p selector-ref="content_text" content-text="code">Datos de codigo</p>
+            <ul selector-ref="code_cards_container" class="cards_container"></ul>
+        </div>
+        <div class="colum_container container" selector-ref="manual_container" container-ref="ui" visibility="hidde"
+            container-name="manual">
+            <nav selector-ref="nav">
+                <h1 class="navbar__title">Editoriales</h1>
+                <button type="button" class="btn" selector-ref="back_to_start">Regresar a inicio</button>
+            </nav>
+            <div selector-ref="content"></div>
+            <div class="navbar__search">
+                <select id="editoriales" selector-ref="select">
+                    <option value="Seleccionar" selector-ref="option">Seleccionar</option>
+                </select>
+            </div>
+            <p selector-ref="content_text" class="" content-text="editorial">Busca por editorial</p>
+            <ul selector-ref="editorial_cards_container" class="cards_container"></ul>
+        </div>
+    </main>
+</body>
+<template selector-ref="option_template" template-ref="option">
+    <option value="" selector-ref="option"></option>
+</template>
+<template template-ref="card">
+    <li selector-ref="card" class="card">
+        <h1 selector-ref="title"></h1>
+    </li>
+</template>
+<template template-ref="edition_content">
+    <div selector-ref="edition_content">
+        <h3 selector-ref="edition"></h3>
+        <p selector-ref="description"></p>
+        <img src="" selector-ref="img" />
+        <span selector-ref="code"></span>
+    </div>
+</template>
+<template template-ref="editorial_content">
+    <ul selector-ref="editorial_content" class="items_container"></ul>
+</template>
+<template template-ref="item_badge">
+    <li selector-ref="item_badge" class="item">
+        <h3 selector-ref="edition"></h3>
+        <span selector-ref="code"></span>
+        <img src="" selector-ref="img" />
+    </li>
+</template>
+<template template-ref="edicion_badge">
+    <span selector-ref="edicion_badge">
+        <h4 selector-ref="nombre_edicion"></h4>
+        <div selector-ref="edicion_id"></div>
+    </span>
+</template>
+
 </html>

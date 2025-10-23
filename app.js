@@ -1,16 +1,6 @@
 import { db } from "./db.js";
 const API = "https://docs.google.com/spreadsheets/d/168CbH6UqvhrdAsS0D0bRrqMDU2NVlL58NuaB2AU2r5Y/edit";
-
-const fetch = async (link) => {
-    const raw = await fetch(link);
-    try {
-        /* const data = await raw.json(); */
-        console.log(raw);
-        /* return data; */
-    } catch (error) {
-        console.log(error);
-    }
-};
+const noImgLink = "https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg";
 
 const $d = document;
 const selector = (tag, target = $d) => target.querySelector(`${tag}`);
@@ -28,6 +18,10 @@ const editorialContentTemplate = template("editorial_content").content;
 const itemBadgeTemplate = template("item_badge").content;
 const editorialLista = ref("editorial_cards_container");
 const codelLista = ref("code_cards_container");
+const editionBadgeTemplate = template("edicion_badge").content;
+const templateItemBadge = template("item_badge").content;
+const inputCode = selector("[input-name='code']");
+const html5QrCode = new Html5Qrcode("reader");
 
 const video = ref("video");
 const resultContainer = ref("scan_result");
@@ -49,14 +43,11 @@ const deleteChildElements = (parentElement) => {
         child = parentElement.lastElementChild;
     }
 };
-/* themeBtn.addEventListener("click", changeTheme); */
 const sanitizeInput = (inputValue) => {
     const div = document.createElement("div");
     div.textContent = inputValue;
     return div.innerHTML;
 };
-const noImgLink = "https://img.freepik.com/vector-premium/vector-icono-imagen-predeterminado-pagina-imagen-faltante-diseno-sitio-web-o-aplicacion-movil-no-hay-foto-disponible_87543-11093.jpg";
-const editionBadgeTemplate = template("edicion_badge").content;
 const createItemBagde = (item) => {
     const newItemClone = itemBadgeTemplate.cloneNode(true);
     const newItem = selector(`[selector-ref="item_badge"]`, newItemClone);
@@ -73,7 +64,6 @@ const createItemBagde = (item) => {
     }
     return newItem;
 };
-const templateItemBadge = template("item_badge").content;
 const crearItem = (tipo, item, edicion = "null") => {
     console.log(tipo, item);
 
@@ -113,7 +103,7 @@ const crearItem = (tipo, item, edicion = "null") => {
     }
     return card;
 };
-const inputCode = selector("[input-name='code']");
+
 const scannerConfig = {
     fps: 10,
     qrbox: { width: 250, height: 250 },
@@ -130,7 +120,6 @@ const scannerConfig = {
         Html5QrcodeSupportedFormats.RSS_EXPANDED,
     ],
 };
-const html5QrCode = new Html5Qrcode("reader");
 
 const startActions = (action) => {
     if (action === "start") {
@@ -183,6 +172,7 @@ selector("[btn-action='search_code']").addEventListener("click", () => {
     } else {
         newCard = createTitle("No se cuenta con ese producto en el inventario");
         console.log(newCard + " esta vacio el input");
+        selector("[selector-ref='scan_code']", ref("code_container"))
     }
 
     console.log(newCard);
@@ -231,7 +221,7 @@ const onScanSuccess = (decodedText, decodedResult) => {
     console.log(decodedText);
 
     let itemSearched;
-    ref("scan_code").textContent = `${decodedText}`;
+    selector("[selector-ref='scan_code']", ref("scanner_container")).textContent = `${decodedText}`;
     console.log(`Code matched = ${decodedText}`, decodedResult);
     db.editoriales.forEach((editorial) => {
         editorial.items.forEach((item) => {

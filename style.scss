@@ -4,6 +4,7 @@
     justify-content: $jc;
     align-items: $ai;
 }
+
 @mixin flexCenter() {
     display: flex;
     justify-content: center;
@@ -89,6 +90,7 @@
 
     color-scheme: light;
 }
+
 [color-scheme="dark"] {
     --fc: var(--logoMintD);
     --fc_off: var(--logoMintD_off);
@@ -102,10 +104,6 @@
     --vueIconText: rgb(204, 204, 204);
     color-scheme: dark;
 }
-[color-scheme] {
-    --h: var(--fc_off);
-    --backdropShadow: 2px 2px 2rem var(--shadow), -2px -2px 2rem var(--shadow);
-}
 
 :root {
     font-size: 12px;
@@ -118,10 +116,12 @@
     -webkit-text-size-adjust: 100%;
     scrollbar-color: var(--fc) var(--sc);
     scrollbar-width: thin;
+
     &:focus-within {
         scroll-behavior: smooth;
     }
 }
+
 *,
 *::after,
 *::before,
@@ -134,6 +134,7 @@
     border: none;
     font-family: "Raleway", sans-serif;
 }
+
 BODY {
     color: var(--tc);
     position: relative;
@@ -157,6 +158,7 @@ IMG {
     border-style: none;
     object-fit: cover;
 }
+
 A {
     background: none;
     text-decoration: none;
@@ -179,13 +181,16 @@ LABEL {
 TEXTAREA {
     resize: none;
 }
+
 BUTTON {
     cursor: pointer;
 }
+
 SVG {
     width: 100%;
     height: auto;
 }
+
 H1,
 H2,
 H3,
@@ -193,44 +198,53 @@ H4 {
     padding: 0;
     margin: 0;
 }
+
 H1,
 H2 {
     text-align: center;
     font-weight: var(--fw_b);
 }
+
 H1 {
     color: var(--fc);
     font-weight: var(--fw_b);
     font-size: var(--fontSizeXClamp);
 }
+
 H2 {
     font-size: var(--fontSizeMClamp);
     font-weight: var(--fw_b);
     color: var(--tc);
 }
+
 H3 {
     font-size: var(--fs_n);
     font-weight: var(--fw_b);
 }
+
 P {
     font-size: var(--fs_n);
     color: var(--tc);
     text-wrap: pretty;
 }
+
 I {
     font-style: italic;
     font-weight: 400;
 }
+
 NAV {
     @include flex(row, space-between, center);
     flex-wrap: wrap;
     max-width: 800px;
     width: 100%;
 }
+
 .container {
     width: 100%;
     height: 100%;
 }
+
 .colum_container {
     display: flex;
     flex-direction: column;
@@ -238,9 +252,11 @@ NAV {
     align-items: center;
     gap: 1rem;
 }
+
 main {
     padding: 1rem 2rem;
 }
+
 .scanner {
     display: flex;
     flex-direction: column;
@@ -252,6 +268,7 @@ main {
     text-align: center;
     font-weight: bold;
 }
+
 .btn {
     border-radius: 5px;
     cursor: pointer;
@@ -365,19 +382,21 @@ INPUT {
     color: var(--whiteOff);
     padding: 1rem 2rem;
 }
-
 [scan-ref] {
     padding: 2rem;
     border-radius: 1rem;
     width: 100%;
     background: var(--bgC_off);
 }
+
 [visibility="hidde"] {
     display: none !important;
 }
+
 [visibility="show"] {
     display: flex !important;
 }
 select {
     padding: 1rem;
 }
+
