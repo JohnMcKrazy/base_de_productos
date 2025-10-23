@@ -227,12 +227,13 @@ const onScanSuccess = (decodedText, decodedResult) => {
             item.ediciones.forEach((edicion) => {
                 if (edicion.codigo === decodedText.toString()) {
                     itemSearched = crearItem("edicion", item, edicion);
-                }else{
-                    itemSearched=createTitle("La base de datos no incluye")
                 }
             });
         });
     });
+    if(itemSearched === undefined){
+        itemSearched=createTitle("La base de datos no incluye este codigo")
+    }
     deleteChildElements(resultContainer);
     html5QrCode.stop();
     resultContainer.appendChild(itemSearched);
