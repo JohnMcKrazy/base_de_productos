@@ -228,7 +228,7 @@ const onScanSuccess = (decodedText, decodedResult) => {
                 if (edicion.codigo === decodedText.toString()) {
                     itemSearched = crearItem("edicion", item, edicion);
                 }else{
-                    resultContainer.textContent=createTitle("La base de datos no incluye")
+                    itemSearched=createTitle("La base de datos no incluye")
                 }
             });
         });
