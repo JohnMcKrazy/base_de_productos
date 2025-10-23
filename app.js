@@ -234,6 +234,7 @@ const onScanSuccess = (decodedText, decodedResult) => {
     if(itemSearched === undefined){
         itemSearched=createTitle("Este codigo no se encuentra en la base")
     }
+    console.log(itemSearched);
     deleteChildElements(resultContainer);
     html5QrCode.stop();
     resultContainer.appendChild(itemSearched);
