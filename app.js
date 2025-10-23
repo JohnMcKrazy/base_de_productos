@@ -220,7 +220,7 @@ const onScanSuccess = (decodedText, decodedResult) => {
     console.log(decodedText);
 
     let itemSearched;
-    selector("[selector-ref='content']", ref("scanner_container")).textContent = `${decodedText}`;
+    selector("[selector-ref='scan_code']", ref("scanner_container")).textContent = `${decodedText}`;
     console.log(`Code matched = ${decodedText}`, decodedResult);
     db.editoriales.forEach((editorial) => {
         editorial.items.forEach((item) => {
