@@ -172,7 +172,6 @@ selector("[btn-action='search_code']").addEventListener("click", () => {
     } else {
         newCard = createTitle("No se cuenta con ese producto en el inventario");
         console.log(newCard + " esta vacio el input");
-        selector("[selector-ref='scan_code']", ref("code_container"))
     }
 
     console.log(newCard);
@@ -221,13 +220,15 @@ const onScanSuccess = (decodedText, decodedResult) => {
     console.log(decodedText);
 
     let itemSearched;
-    selector("[selector-ref='scan_code']", ref("scanner_container")).textContent = `${decodedText}`;
+    selector("[selector-ref='content']", ref("scanner_container")).textContent = `${decodedText}`;
     console.log(`Code matched = ${decodedText}`, decodedResult);
     db.editoriales.forEach((editorial) => {
         editorial.items.forEach((item) => {
             item.ediciones.forEach((edicion) => {
                 if (edicion.codigo === decodedText.toString()) {
                     itemSearched = crearItem("edicion", item, edicion);
+                }else{
+                    resultContainer.textContent=createTitle("La base de datos no incluye ese articulo");
                 }
             });
         });
